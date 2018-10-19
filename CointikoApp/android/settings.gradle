@@ -1,0 +1,3 @@
+rootProject.name = 'CointikoApp'
+
+include ':app'

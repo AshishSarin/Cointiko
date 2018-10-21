@@ -1,8 +1,13 @@
 
 import React, { Component } from "react";
 import { View, Text } from 'react-native';
+import { connect } from 'react-redux';
 
 class AboutScreen extends Component {
+
+    constructor(props) {
+        super(props);
+    }
     render() {
         return (
             <View>
@@ -13,4 +18,4 @@ class AboutScreen extends Component {
 }
 
 
-export default AboutScreen;
+export default connect(null, {})(AboutScreen);

@@ -4,11 +4,13 @@ import {
 } from "react-navigation";
 import React from "react";
 import { Image, TouchableOpacity } from 'react-native';
-import HomeScreen from "../screens/HomeScreen";
-import AboutScreen from "../screens/AboutScreen";
-import MarketScreen from "../screens/MarketScreen";
+
 import { collapsibleOptionsForTab, collapsibleTabConfig } from 'react-navigation-collapsible';
 import { ScreenTitles } from "../values";
+import {
+    HomeScreen, MarketScreen, ConverterScreen,
+    AboutScreen
+} from "../screens";
 
 
 
@@ -23,12 +25,17 @@ const HomeTabStack = createMaterialTopTabNavigator(
 
         },
 
+        ConverterScreen: {
+            screen: ConverterScreen
+        },
+
     },
     collapsibleTabConfig({
         navigationOptions: {
             tabBarOptions: {
                 indicatorStyle: { backgroundColor: 'white' },
                 style: { backgroundColor: 'blue' },
+                scrollEnabled: true
             }
         }
     })
@@ -42,14 +49,15 @@ const HomeStack = createStackNavigator({
         navigationOptions: props => collapsibleOptionsForTab(props,
             {
                 title: ScreenTitles.TITLE_HOME_SCREEN,
-                headerStyle: { backgroundColor: 'green' },
+                headerStyle: { backgroundColor: 'blue' },
+                headerTintColor: 'white',
                 headerLeft: (
                     <TouchableOpacity
                         onPress={() => props.navigation.openDrawer()}
                     >
                         <Image
-                            source={require('../images/icon_menu.png')}
-                            style={{ width: 24, height: 24 }}
+                            source={require('../images/icon_menu_white.png')}
+                            style={{ width: 24, height: 24, marginLeft: 12 }}
                         />
                     </TouchableOpacity>
                 )

@@ -29,13 +29,21 @@ class HomeScreen extends Component {
     }
 
     renderItem = ({ item, index }) => {
-        console.log(index);
         if (index === 0) {
             return this.renderCarousel();
         }
         return <PostListItem
+            onPressPostItem={this.onPressPostItem.bind(this, item.id)}
             postItemData={item}
         />
+    }
+
+
+    onPressPostItem(postId) {
+        const { navigate } = this.props.navigation;
+        navigate('PostDetailScreen', {
+            id: postId
+        });
     }
 
     renderCarousel() {

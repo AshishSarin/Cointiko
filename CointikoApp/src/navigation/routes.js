@@ -9,7 +9,8 @@ import { collapsibleOptionsForTab, collapsibleTabConfig } from 'react-navigation
 import { ScreenTitles } from "../values";
 import {
     HomeScreen, MarketScreen, ConverterScreen,
-    AboutScreen
+    AboutScreen,
+    PostDetailScreen
 } from "../screens";
 
 
@@ -62,6 +63,13 @@ const HomeStack = createStackNavigator({
                     </TouchableOpacity>
                 )
             })
+    },
+
+    PostDetailScreen: {
+        screen: PostDetailScreen,
+        navigationOptions: {
+            title: 'Post Details'
+        }
     }
 })
 

@@ -10,6 +10,8 @@
     "react": "16.6.0-alpha.8af6728",
     "react-native": "0.57.3",
     "react-native-carousel-view": "^0.5.1",
+    "react-native-htmlview": "^0.13.0",
+    "react-native-render-html": "^3.10.0",
     "react-native-slideshow": "^1.0.1",
     "react-native-swiper": "^1.5.13",
     "react-navigation": "^2.18.0",

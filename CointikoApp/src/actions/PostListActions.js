@@ -12,6 +12,7 @@ export const updatePostList = (offset) => {
 
         getLatestPost(offset)
             .then(response => {
+                console.log('res', response);
                 if (response.getPostsStatus == GetPostCodes.GET_POST_SUCCESS) {
                     // post was succesfully fetched from api
                     // dispatch it to reducer

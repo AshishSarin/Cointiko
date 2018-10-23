@@ -1,26 +1,27 @@
 import React, { Component } from 'react';
 import { ActivityIndicator, View, Text } from 'react-native';
+import { CointikoProgressBar } from '../widgets';
 
 
 export default class PostListFooter extends Component {
     render() {
-        const { isPostLoading } = this.props;
+        const { isPostLoading, msg } = this.props;
         return (
             <View style={{
                 height: 100, backgroundColor: 'white', justifyContent: 'center',
                 alignItems: 'center'
             }}>
-                {this.renderLoader(isPostLoading)}
+                {this.renderLoader(isPostLoading, msg)}
             </View>
         )
     }
 
 
-    renderLoader(isPostLoading) {
+    renderLoader(isPostLoading, msg) {
         if (isPostLoading)
-            return <ActivityIndicator size='large' />
+            return <CointikoProgressBar />
         else {
-            return <Text>No more posts to load</Text>
+            return <Text>{msg}</Text>
         }
     }
 }

@@ -1,0 +1,1 @@
+export const PROGRESS_BAR_COLOR = 'blue'

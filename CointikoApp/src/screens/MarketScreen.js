@@ -16,7 +16,7 @@ class MarketScreen extends Component {
         super(props);
 
         const data = [];
-        for (let i = 0; i < 60; i++) {
+        for (let i = 0; i < 4; i++) {
             data.push(i + 10);
         }
 

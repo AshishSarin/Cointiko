@@ -1,6 +1,6 @@
 
 import React, { Component } from "react";
-import { View, Text } from 'react-native';
+import { View, ScrollView, Text } from 'react-native';
 import { connect } from 'react-redux';
 
 class ConverterScreen extends Component {
@@ -14,9 +14,9 @@ class ConverterScreen extends Component {
     }
     render() {
         return (
-            <View>
+            <ScrollView>
                 <Text>Converter Screen</Text>
-            </View>
+            </ScrollView>
         );
     }
 }

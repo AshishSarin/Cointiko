@@ -11,7 +11,7 @@ export const postItemStyle = StyleSheet.create({
     },
 
     itemThumbnail: {
-        height: 80, width: 80,
+        height: 80, width: 80, justifyContent: 'center', alignItems: 'center'
     },
     itemTitle: {
         flex: 1,

@@ -29,7 +29,6 @@ export default (state = INITIAL_STATE, action) => {
             return { ...state, postList: updatedPostList, isPostListLoading: false, isAllPostLoaded: isAllLoaded };
         }
         case PostListActions.UPDATE_POST_LIST_FAIL:
-            console.log(action.error);
             return { ...state, isPostListLoading: false, errorPostLoading: action.error };
         default:
             return state;

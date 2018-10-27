@@ -5,14 +5,13 @@ export const getLatestPost = (offset) => {
     let postList = [];
     return fetchPosts(offset)
         .then(response => {
-            console.log(response);
             // check if response status is ok
             if (response.ok) {
                 // response status is ok
                 // get body from response
                 return response.json()
                     .then(paresedResp => {
-                        console.log(paresedResp);
+                        console.log("Fetch Post response body", paresedResp);
                         return {
                             postList: paresedResp,
                             getPostsStatus: GetPostCodes.GET_POST_SUCCESS

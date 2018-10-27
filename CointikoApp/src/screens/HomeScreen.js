@@ -120,7 +120,6 @@ class HomeScreen extends Component {
 
 
     renderRetry() {
-        console.log('render retry', this.props.errorPostLoading);
         return (
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                 <Text style={{ marginBottom: 12 }}>{this.props.errorPostLoading}</Text>

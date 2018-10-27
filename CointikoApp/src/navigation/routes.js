@@ -12,6 +12,7 @@ import {
     AboutScreen,
     PostDetailScreen
 } from "../screens";
+import Sidemenu from "./SideMenu";
 
 
 
@@ -70,13 +71,7 @@ const HomeStack = createStackNavigator({
         navigationOptions: {
             title: 'Post Details'
         }
-    }
-})
-
-
-
-
-const AboutStack = createStackNavigator({
+    },
     AboutScreen: {
         screen: AboutScreen,
         navigationOptions: {
@@ -85,14 +80,17 @@ const AboutStack = createStackNavigator({
     },
 })
 
-export const AppStack = createDrawerNavigator({
-    Home: {
-        screen: HomeStack
-    },
 
-    About: {
-        screen: AboutStack
+
+export const AppStack = createDrawerNavigator(
+    {
+        Home: {
+            screen: HomeStack
+        },
+    },
+    {
+        contentComponent: Sidemenu
     }
-})
+);
 
 

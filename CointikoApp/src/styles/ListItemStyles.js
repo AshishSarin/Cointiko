@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { DRAWER_FOOTER_COLOR } from '../values';
 
 export const postItemStyle = StyleSheet.create({
     itemContainer: {
@@ -19,4 +20,11 @@ export const postItemStyle = StyleSheet.create({
         fontSize: 14,
     }
 });
+
+export const drawerFooter = StyleSheet.create({
+    footerContainer: {
+        height: 1,
+        backgroundColor: DRAWER_FOOTER_COLOR,
+    }
+})
 

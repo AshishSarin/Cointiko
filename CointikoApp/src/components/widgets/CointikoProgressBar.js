@@ -4,10 +4,10 @@ import { PROGRESS_BAR_COLOR } from '../../values';
 
 class CointikoProgressBar extends Component {
     render() {
-        const { style } = this.props;
+        const { style, size } = this.props;
         return (
             <ActivityIndicator
-                size="large"
+                size={size ? size : "large"}
                 color={PROGRESS_BAR_COLOR}
                 style={[style]}
                 animating={(this.props.animating !== undefined) ? this.props.animating : true} />

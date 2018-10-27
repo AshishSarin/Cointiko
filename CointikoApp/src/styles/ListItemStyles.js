@@ -4,15 +4,19 @@ import { DRAWER_FOOTER_COLOR } from '../values';
 export const postItemStyle = StyleSheet.create({
     itemContainer: {
         flex: 1,
-        height: 120,
-        paddingHorizontal: 12,
+        marginHorizontal: 16,
+        marginBottom: 16,
         backgroundColor: 'white',
-        flexDirection: 'row',
-        alignItems: 'center',
     },
 
+    itemTouchable: {
+        flexDirection: 'row',
+        height: 120,
+        alignItems: 'center',
+        paddingHorizontal: 12
+    },
     itemThumbnail: {
-        height: 80, width: 80, justifyContent: 'center', alignItems: 'center'
+        height: 80, width: 80, justifyContent: 'center', alignItems: 'center',
     },
     itemTitle: {
         flex: 1,

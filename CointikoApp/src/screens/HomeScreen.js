@@ -35,6 +35,7 @@ class HomeScreen extends Component {
             return this.renderCarousel();
         }
         return <PostListItem
+            style={index === 1 ? { marginTop: 24 } : {}}
             onPressPostItem={this.onPressPostItem.bind(this, item.id)}
             postItemData={item}
         />
@@ -154,7 +155,7 @@ class HomeScreen extends Component {
                 data={this.props.postList}
                 renderItem={this.renderItem}
                 keyExtractor={(item, index) => String(index)}
-                ItemSeparatorComponent={() => <PostItemSeperator />}
+                // ItemSeparatorComponent={() => <PostItemSeperator />}
                 contentContainerStyle={{ paddingTop: paddingHeight }}
                 scrollIndicatorInsets={{ top: paddingHeight }}
                 _mustAddThis={scrollY}

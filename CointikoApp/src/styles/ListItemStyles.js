@@ -25,10 +25,34 @@ export const postItemStyle = StyleSheet.create({
     }
 });
 
-export const drawerFooter = StyleSheet.create({
-    footerContainer: {
-        height: 1,
-        backgroundColor: DRAWER_FOOTER_COLOR,
+
+
+export const featuredPostItemStyle = StyleSheet.create({
+    container: {
+        paddingHorizontal: 12,
+        paddingVertical: 6,
+        flex: 1,
+    },
+    cardContainer: {
+        justifyContent: 'center',
+        flex: 1
+    },
+    touchableContainer: {
+        flex: 1
+    },
+    imageContainer: {
+        flex: 1,
+        alignItems: "stretch",
+        justifyContent: 'flex-end'
+    },
+    itemContent: {
+        justifyContent: 'center',
+        paddingHorizontal: 12,
+        paddingVertical: 4,
+        backgroundColor: 'rgba(0,0,0,0.7)'
+    },
+    itemTitle: {
+        color: 'white',
+        fontSize: 16,
     }
 })
-

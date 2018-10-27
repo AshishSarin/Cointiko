@@ -1,5 +1,9 @@
 import { StyleSheet } from 'react-native';
-import { DRAWER_ITEM_TEXT_COLOLR, DRAWER_ITEM_COLOR } from '../values';
+import {
+    DRAWER_ITEM_TEXT_COLOLR,
+    DRAWER_ITEM_COLOR,
+    DRAWER_FOOTER_COLOR
+} from '../values';
 
 
 export const drawerStyle = StyleSheet.create({
@@ -22,5 +26,12 @@ export const drawerStyle = StyleSheet.create({
     itemImage: {
         height: 32,
         width: 32
+    }
+});
+
+export const drawerFooter = StyleSheet.create({
+    footerContainer: {
+        height: 1,
+        backgroundColor: DRAWER_FOOTER_COLOR,
     }
 })

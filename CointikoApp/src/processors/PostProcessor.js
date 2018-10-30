@@ -1,9 +1,10 @@
-import { fetchPosts } from "../api";
+import { fetchPosts, fetchBlockPosts } from "../api";
 import { GetPostCodes } from "../utils";
+import { ErrorMsg } from "../values";
 
-export const getLatestPost = (offset) => {
+export const getLatestPost = (offset, categoryCode) => {
     let postList = [];
-    return fetchPosts(offset)
+    return fetchPosts(offset, categoryCode)
         .then(response => {
             // check if response status is ok
             if (response.ok) {
@@ -21,8 +22,8 @@ export const getLatestPost = (offset) => {
                         console.log(error);
                         return {
                             postList: postList,
-                            getPostsStatus: GetPostCodes.GET_POST_SUCCESS,
-                            error: 'Error in fetching new posts'
+                            getPostsStatus: GetPostCodes.GET_POST_FAIL,
+                            error: ErrorMsg.ERROR_FETCH_POST
                         }
                     });
             } else {
@@ -30,7 +31,7 @@ export const getLatestPost = (offset) => {
                 return {
                     postList: postList,
                     getPostsStatus: GetPostCodes.GET_POST_FAIL,
-                    error: 'Error in fetching new posts'
+                    error: ErrorMsg.ERROR_FETCH_POST
                 };
             }
 
@@ -40,7 +41,9 @@ export const getLatestPost = (offset) => {
             return {
                 postList: postList,
                 getPostsStatus: GetPostCodes.GET_POST_FAIL,
-                error: 'Error in fetching new posts'
+                error: ErrorMsg.ERROR_FETCH_POST
             };
         })
 }
+
+

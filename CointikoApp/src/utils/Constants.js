@@ -9,3 +9,12 @@ export const DrawerItemsIds = {
     DRAWER_ITEM_ABOUT: 'about_us',
     DRAWER_ITEM_CONTACT: 'contact_us',
 }
+
+export const PostCategoriesCodes = {
+    BLOCKCHAIN: 69,
+    CRYPTOCURRENCY: 1,
+    MINING: 49,
+    NEWS: 72,
+    WALLETS: 81,
+    TRADING: 102
+} 

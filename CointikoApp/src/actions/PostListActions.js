@@ -1,6 +1,7 @@
 import { PostListActions } from "./Types";
-import { getLatestPost } from "../processors";
-import { GetPostCodes } from "../utils";
+import { getLatestPost, getLatestBlockPost } from "../processors";
+import { GetPostCodes, PostCategoriesCodes } from "../utils";
+import { ErrorMsg } from "../values";
 
 
 
@@ -32,6 +33,9 @@ export const updatePostList = (offset) => {
 }
 
 
+
+
 const updatePostListFail = (dispatch, errMsg) => {
     dispatch({ type: PostListActions.UPDATE_POST_LIST_FAIL, error: errMsg });
 }
+

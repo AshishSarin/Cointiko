@@ -1,34 +1,28 @@
 import React, { Component } from "react";
-import { View, Text, FlatList, ImageBackground, ActivityIndicator, TouchableOpacity, Animated, Image, StyleSheet } from 'react-native';
+import { View, Text, FlatList, TouchableOpacity, Animated } from 'react-native';
 import { connect } from 'react-redux';
-import { withCollapsible } from 'react-navigation-collapsible';
-import { updateDemoState } from '../actions/HomeActions';
-import { ScreenTitles, LIST_BACKGROUND_COLOR } from "../values";
+// import { withCollapsible } from 'react-navigation-collapsible';
+import { ScreenTitles } from "../values";
 import { updatePostList } from '../actions';
-import { PostListItem, PostItemSeperator, PostListFooter } from "../components/listItems";
+import { PostListItem, PostListFooter } from "../components/listItems";
 
 
-import { CointikoProgressBar, CointikoCarousel } from "../components/widgets";
+import { CointikoProgressBar } from "../components/widgets";
 import { initialPostLoaderStyle } from "../styles/LayoutStyles";
+import { PostCategoriesCodes } from "../utils";
 
 const AnimatedFlatList = Animated.createAnimatedComponent(FlatList);
 
 
-class HomeScreen extends Component {
+class BlockchainScreen extends Component {
 
-    static navigationOptions = {
-        title: ScreenTitles.TITLE_NEWS_TAB,
-    };
     constructor(props) {
         super(props);
 
-        this.fetchPostList()
+        this.fetchPostList();
     }
 
     renderItem = ({ item, index }) => {
-        if (index === 0) {
-            return <CointikoCarousel featuredPostList={this.props.featuredPostList} />
-        }
         return <PostListItem
             style={index === 1 ? { marginTop: 24 } : {}}
             onPressPostItem={this.onPressPostItem.bind(this, item.id)}
@@ -44,25 +38,15 @@ class HomeScreen extends Component {
         });
     }
 
-
-
-    fetchPostList() {
-        // refresh post list only when it is already not loading
-        if (!this.props.isPostListLoading && !this.props.isAllPostLoaded) {
-            if (this.props.postList) {
-                let offset = (this.props.postList.length !== 0) ? (this.props.postList.length - 1) : this.props.postList.length;
-                this.props.updatePostList(offset);
-            } else {
-                this.props.updatePostList(0);
-            }
-        }
+    componentDidUpdate() {
+        console.log('componendDidUpdateCalled');
     }
 
-
     render() {
+        console.log('hi', this.props.postList.length > 0);
         if (this.props.errorPostLoading && this.props.postList.length === 0) {
 
-            // there is error in loading post and also there is no post in the list
+            // there is error in loading blockchain post list and also there is no post in the list
             // show a retry button in this case
             return this.renderRetry();
         } else if (this.props.postList.length > 0) {
@@ -88,7 +72,7 @@ class HomeScreen extends Component {
     renderRetry() {
         return (
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                <Text style={{ marginBottom: 12 }}>{this.props.errorPostLoading}</Text>
+                <Text style={{ marginBottom: 12 }}>{this.props.errorBlockchainLoading}</Text>
                 <TouchableOpacity
                     onPress={this.onPressRetry.bind(this)}
                     style={{ backgroundColor: 'blue', justifyContent: 'center', alignItems: 'center', borderRadius: 20 }}
@@ -101,28 +85,64 @@ class HomeScreen extends Component {
 
     onPressRetry() {
         this.fetchPostList();
+
     }
 
 
+    fetchPostList() {
+        console.log('fetchPostList is called');
+        // refresh post list only when it is already not loading
+        if (!this.props.isPostListLoading && !this.props.isAllPostLoaded) {
+            if (this.props.postList) {
+                let offset = (this.props.postList.length !== 0) ? (this.props.postList.length - 1) : this.props.postList.length;
+                this.props.updatePostList(offset);
+            } else {
+                this.props.updatePostList(0);
+            }
+        }
+    }
 
     renderPostList() {
-        const { paddingHeight, scrollY, onScroll } = this.props.collapsible;
+        console.log('renderPostList');
+        // const { paddingHeight, scrollY, onScroll } = this.props.collapsible;
+        let filteredList = this.getBlocklist();
         return (
-            <AnimatedFlatList
-                style={{ flex: 1, backgroundColor: LIST_BACKGROUND_COLOR }}
-                data={this.props.postList}
+            <FlatList
+                style={{ flex: 1, backgroundColor: 'white' }}
+                data={filteredList}
                 renderItem={this.renderItem}
                 keyExtractor={(item, index) => String(index)}
-                contentContainerStyle={{ paddingTop: paddingHeight }}
-                scrollIndicatorInsets={{ top: paddingHeight }}
-                _mustAddThis={scrollY}
+                // contentContainerStyle={{ paddingTop: paddingHeight }}
+                // scrollIndicatorInsets={{ top: paddingHeight }}
+                // _mustAddThis={scrollY}
                 ListFooterComponent={this.renderPostListFooter.bind(this)}
-                onScroll={onScroll}
+                // onScroll={onScroll}
                 onEndReachedThreshold={0.1}
                 onEndReached={this.onLazyLoadPostList.bind(this)}
             />
         );
     }
+
+
+    getBlocklist() {
+        let filteredList = [];
+        filteredList = this.props.postList.filter(postItem => {
+            if (postItem.categories) {
+                let index = postItem.categories.findIndex(item => {
+                    return (item === PostCategoriesCodes.BLOCKCHAIN);
+                })
+                if (index === -1) {
+                    return false;
+                }
+                return true;
+            }
+        });
+        console.log('filteredList', filteredList);
+        return filteredList;
+    }
+
+    // blockchainList: [], isBlockchainListLoading: false,
+    // errorBlockchainLoading: "", isAllBlockchainLoaded: false,
 
     onLazyLoadPostList() {
         if (!this.props.isPostListLoading && !this.props.errorPostLoading) {
@@ -132,10 +152,11 @@ class HomeScreen extends Component {
     }
 
     renderPostListFooter() {
+        console.log('this.isAllposloaed', this.props.isAllPostLoaded);
         if (this.props.isAllPostLoaded) {
             return (
                 <PostListFooter
-                    isPostLoading={this.props.isPostListLoading}
+                    isPostLoading={false}
                     msg={"No more posts to load"}
                 />
             );
@@ -158,20 +179,25 @@ class HomeScreen extends Component {
             );
         }
     }
+
+    refreshPostList() {
+
+    }
+
 }
+
 
 
 
 const mapStateTopProps = (state) => {
     const { postList, isPostListLoading, featuredPostList, isAllPostLoaded, errorPostLoading } = state.posts;
     return { postList, isPostListLoading, featuredPostList, isAllPostLoaded, errorPostLoading };
+
 }
 
-
-const HomeScreenConnect = connect(mapStateTopProps, {
-    updateDemoState,
+export default connect(mapStateTopProps, {
     updatePostList
-})(HomeScreen)
+})(BlockchainScreen)
 
 
-export default withCollapsible(HomeScreenConnect, { iOSCollapsedColor: '#031' });
+// export default withCollapsible(BlockchainScreenConnect, { iOSCollapsedColor: '#031' });

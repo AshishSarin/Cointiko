@@ -10,7 +10,8 @@ import { ScreenTitles } from "../values";
 import {
     HomeScreen, MarketScreen, ConverterScreen,
     AboutScreen,
-    PostDetailScreen
+    PostDetailScreen,
+    BlockchainScreen
 } from "../screens";
 import Sidemenu from "./SideMenu";
 
@@ -69,7 +70,7 @@ const HomeStack = createStackNavigator({
     PostDetailScreen: {
         screen: PostDetailScreen,
         navigationOptions: {
-            title: 'Post Details'
+            title: 'Details'
         }
     },
     AboutScreen: {
@@ -80,6 +81,28 @@ const HomeStack = createStackNavigator({
     },
 })
 
+const BlockchainStack = createStackNavigator({
+    BlockchainScreen: {
+        screen: BlockchainScreen,
+        navigationOptions:
+        {
+            title: ScreenTitles.TITLE_BLOCKCHAIN_SCREEN,
+            headerStyle: { backgroundColor: 'blue' },
+            headerTintColor: 'white',
+            // headerLeft: (
+            //     <TouchableOpacity
+            //         onPress={() => props.navigation.openDrawer()}
+            //     >
+            //         <Image
+            //             source={require('../images/icon_menu_white.png')}
+            //             style={{ width: 24, height: 24, marginLeft: 12 }}
+            //         />
+            //     </TouchableOpacity>
+            // )
+        }
+    }
+});
+
 
 
 export const AppStack = createDrawerNavigator(
@@ -87,6 +110,10 @@ export const AppStack = createDrawerNavigator(
         Home: {
             screen: HomeStack
         },
+        Blockchain: {
+            screen: BlockchainStack
+        }
+
     },
     {
         contentComponent: Sidemenu

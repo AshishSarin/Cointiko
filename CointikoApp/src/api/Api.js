@@ -1,9 +1,13 @@
 import { URLConstants } from "./UrlConstants";
 
 
-const LIMIT_PER_PAGE = 10
-export const fetchPosts = (offset) => {
-    var postUrl = URLConstants.GET_POSTS + "?per_page=" + LIMIT_PER_PAGE + "&offset=" + offset + "&_embed";
+const LIMIT_PER_PAGE = 30
+export const fetchPosts = (offset, categoryCode) => {
+    var postUrl = URLConstants.GET_POSTS + "?per_page="
+        + LIMIT_PER_PAGE + "&offset="
+        + offset
+        + (categoryCode ? "&categories=" + categoryCode : "")
+        + "&_embed";
     console.log('fetchPost API called', postUrl);
     return fetch(postUrl, {
         method: 'GET'

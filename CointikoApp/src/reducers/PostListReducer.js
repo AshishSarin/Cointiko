@@ -1,11 +1,9 @@
 import { PostListActions } from "../actions/Types";
 
 const INITIAL_STATE = {
-    postList: [],
-    featuredPostList: [],
-    isPostListLoading: false,
-    errorPostLoading: "",
-    isAllPostLoaded: false,
+    // initial state objects for home post list
+    postList: [], featuredPostList: [], isPostListLoading: false,
+    errorPostLoading: "", isAllPostLoaded: false,
 }
 
 export default (state = INITIAL_STATE, action) => {
@@ -44,4 +42,8 @@ export default (state = INITIAL_STATE, action) => {
         default:
             return state;
     }
+}
+
+const getUpdatedList = (oldList, newList) => {
+    return oldList.push(...newList);
 }

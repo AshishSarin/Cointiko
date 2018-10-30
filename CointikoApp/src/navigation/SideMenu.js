@@ -14,7 +14,7 @@ import DrawerListFooter from '../components/listItems/DrawerListFooter';
 
 const DRAWER_ITEMS = [
     { id: DrawerItemsIds.DRAWER_ITEM_HOME, title: DrawerItemsLabels.DRAWER_ITEM_HOME, routeName: 'HomeTabStack' },
-    { id: DrawerItemsIds.DRAWER_ITEM_BLOCKCHAIN, title: DrawerItemsLabels.DRAWER_ITEM_BLOCKCHAIN, routeName: 'AboutScreen' },
+    { id: DrawerItemsIds.DRAWER_ITEM_BLOCKCHAIN, title: DrawerItemsLabels.DRAWER_ITEM_BLOCKCHAIN, routeName: 'BlockchainScreen' },
     { id: DrawerItemsIds.DRAWER_ITEM_CRYPTOCURRENCY, title: DrawerItemsLabels.DRAWER_ITEM_CRYPTOCURRENCY, routeName: 'AboutScreen' },
     { id: DrawerItemsIds.DRAWER_ITEM_MINING, title: DrawerItemsLabels.DRAWER_ITEM_MINING, routeName: 'AboutScreen' },
     { id: DrawerItemsIds.DRAWER_ITEM_NEWS, title: DrawerItemsLabels.DRAWER_ITEM_NEWS, routeName: 'AboutScreen' },

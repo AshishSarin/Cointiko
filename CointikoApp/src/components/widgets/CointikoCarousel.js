@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
-import { View, TouchableNativeFeedback, TouchableOpacity, StyleSheet, ImageBackground, Text } from 'react-native';
+import {
+    View, TouchableNativeFeedback, TouchableOpacity,
+    StyleSheet, ImageBackground, Text
+} from 'react-native';
 import CardView from 'react-native-cardview';
 import Carousel from 'react-native-carousel-view';
 import { featuredPostItemStyle } from '../../styles';
+
 export default class CointikoCarousel extends Component {
 
     constructor(props) {
@@ -55,7 +59,7 @@ export default class CointikoCarousel extends Component {
                 >
                     <TouchableOpacity
                         style={featuredPostItemStyle.touchableContainer}
-                        onPress={() => console.warn('Hi')}>
+                        onPress={this.onPressItem.bind(this, postItem.id)}>
                         <ImageBackground
                             resizeMode="stretch"
                             style={featuredPostItemStyle.imageContainer}
@@ -75,13 +79,20 @@ export default class CointikoCarousel extends Component {
             </View>
         )
     }
+
+    onPressItem(postId) {
+        const { navigate } = this.props;
+        navigate('PostDetailScreen', {
+            id: postId
+        });
+    }
 }
 
 const styles = StyleSheet.create({
     container: {
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 24,
+        marginTop: 12,
         flex: 1
     },
 

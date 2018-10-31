@@ -11,6 +11,7 @@ export const DrawerItemsIds = {
 }
 
 export const PostCategoriesCodes = {
+    HOME: -101,
     BLOCKCHAIN: 69,
     CRYPTOCURRENCY: 1,
     MINING: 49,

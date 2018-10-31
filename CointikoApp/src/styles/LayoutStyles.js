@@ -2,7 +2,15 @@ import { StyleSheet } from 'react-native';
 import { LIST_BACKGROUND_COLOR } from '../values';
 
 
-export const initialPostLoaderStyle = StyleSheet.create({
+
+
+export const postListStyle = StyleSheet.create({
+    postListContainer: {
+        flex: 1,
+        backgroundColor: LIST_BACKGROUND_COLOR,
+        paddingTop: 16
+    },
+
     initialLoaderCointainer: {
         flex: 1,
         justifyContent: 'center',

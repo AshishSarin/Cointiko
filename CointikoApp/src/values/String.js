@@ -3,7 +3,13 @@ export const ScreenTitles = {
     TITLE_ABOUT_SCREEN: 'About Us',
     TITLE_NEWS_TAB: 'News',
     TITLE_LIVE_PRICES_TAB: 'Live Prices',
-    TITLE_BLOCKCHAIN_SCREEN: 'Blockchain'
+    TITLE_BLOCKCHAIN_SCREEN: 'Blockchain',
+    TITLE_CRYPTOCURRENCY_SCREEN: 'Cryptocurrency 101',
+    TITLE_MINING_SCREEN: 'Mining',
+    TITLE_NEWS_SCREEN: 'News',
+    TITLE_WALLETS_SCREEN: 'Wallets',
+    TITLE_TRADING_SCREEN: 'Trading',
+    TITLE_POST_DETAIL_SCREEN: 'Details'
 }
 
 export const DrawerItemsLabels = {
@@ -20,4 +26,8 @@ export const DrawerItemsLabels = {
 
 export const ErrorMsg = {
     ERROR_FETCH_POST: "Error in fetching posts. Try again"
+}
+
+export const ButtonLabels = {
+    RETRY: 'Retry'
 }

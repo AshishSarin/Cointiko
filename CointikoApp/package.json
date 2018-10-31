@@ -9,6 +9,7 @@
   "dependencies": {
     "add": "^2.0.6",
     "react": "16.6.0-alpha.8af6728",
+    "react-addons-update": "^15.6.2",
     "react-native": "0.57.3",
     "react-native-cardview": "^2.0.2",
     "react-native-carousel-view": "^0.5.1",

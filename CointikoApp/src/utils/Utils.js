@@ -1,3 +1,10 @@
+export const decodeHtmlEntity = (str) => {
+    return str.replace(/&#(\d+);/g, function (match, dec) {
+        return String.fromCharCode(dec);
+    });
+};
+
+
 export const formatDate = (dateInISOStr) => {
     if (dateInISOStr) {
         var date = new Date(dateInISOStr);

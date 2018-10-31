@@ -39,16 +39,19 @@ class MarketScreen extends Component {
         const { paddingHeight, scrollY, onScroll } = this.props.collapsible;
 
         return (
-            <AnimatedFlatList
-                style={{ flex: 1 }}
-                data={this.state.data}
-                renderItem={this.renderItem}
-                keyExtractor={(item, index) => String(index)}
-                contentContainerStyle={{ paddingTop: paddingHeight }}
-                scrollIndicatorInsets={{ top: paddingHeight }}
-                _mustAddThis={scrollY}
-                onScroll={onScroll}
-            />
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                <Text style={{ fontSize: 16, color: 'black' }}>Live Prices</Text>
+            </View>
+            // <AnimatedFlatList
+            //     style={{ flex: 1 }}
+            //     data={this.state.data}
+            //     renderItem={this.renderItem}
+            //     keyExtractor={(item, index) => String(index)}
+            //     contentContainerStyle={{ paddingTop: paddingHeight }}
+            //     scrollIndicatorInsets={{ top: paddingHeight }}
+            //     _mustAddThis={scrollY}
+            //     onScroll={onScroll}
+            // />
         );
     }
 }

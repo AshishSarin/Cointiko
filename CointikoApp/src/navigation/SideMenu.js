@@ -15,11 +15,11 @@ import DrawerListFooter from '../components/listItems/DrawerListFooter';
 const DRAWER_ITEMS = [
     { id: DrawerItemsIds.DRAWER_ITEM_HOME, title: DrawerItemsLabels.DRAWER_ITEM_HOME, routeName: 'HomeTabStack' },
     { id: DrawerItemsIds.DRAWER_ITEM_BLOCKCHAIN, title: DrawerItemsLabels.DRAWER_ITEM_BLOCKCHAIN, routeName: 'BlockchainScreen' },
-    { id: DrawerItemsIds.DRAWER_ITEM_CRYPTOCURRENCY, title: DrawerItemsLabels.DRAWER_ITEM_CRYPTOCURRENCY, routeName: 'AboutScreen' },
-    { id: DrawerItemsIds.DRAWER_ITEM_MINING, title: DrawerItemsLabels.DRAWER_ITEM_MINING, routeName: 'AboutScreen' },
-    { id: DrawerItemsIds.DRAWER_ITEM_NEWS, title: DrawerItemsLabels.DRAWER_ITEM_NEWS, routeName: 'AboutScreen' },
-    { id: DrawerItemsIds.DRAWER_ITEM_WALLETS, title: DrawerItemsLabels.DRAWER_ITEM_WALLETS, routeName: 'AboutScreen' },
-    { id: DrawerItemsIds.DRAWER_ITEM_TRADING, title: DrawerItemsLabels.DRAWER_ITEM_TRADING, routeName: 'AboutScreen' },
+    { id: DrawerItemsIds.DRAWER_ITEM_CRYPTOCURRENCY, title: DrawerItemsLabels.DRAWER_ITEM_CRYPTOCURRENCY, routeName: 'CryptocurrencyScreen' },
+    { id: DrawerItemsIds.DRAWER_ITEM_MINING, title: DrawerItemsLabels.DRAWER_ITEM_MINING, routeName: 'MiningScreen' },
+    { id: DrawerItemsIds.DRAWER_ITEM_NEWS, title: DrawerItemsLabels.DRAWER_ITEM_NEWS, routeName: 'NewsScreen' },
+    { id: DrawerItemsIds.DRAWER_ITEM_WALLETS, title: DrawerItemsLabels.DRAWER_ITEM_WALLETS, routeName: 'WalletsScreen' },
+    { id: DrawerItemsIds.DRAWER_ITEM_TRADING, title: DrawerItemsLabels.DRAWER_ITEM_TRADING, routeName: 'TradingScreen' },
     { id: DrawerItemsIds.DRAWER_ITEM_ABOUT, title: DrawerItemsLabels.DRAWER_ITEM_ABOUT, routeName: 'AboutScreen' },
     { id: DrawerItemsIds.DRAWER_ITEM_CONTACT, title: DrawerItemsLabels.DRAWER_ITEM_CONTACT, routeName: 'AboutScreen' }
 ]

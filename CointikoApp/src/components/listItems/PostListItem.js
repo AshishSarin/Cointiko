@@ -6,6 +6,7 @@ import {
 import { postItemStyle, drawerStyle } from '../../styles';
 import { CointikoProgressBar } from '../widgets';
 import CardView from 'react-native-cardview';
+import { decodeHtmlEntity } from '../../utils';
 
 class PostListItem extends Component {
 
@@ -35,7 +36,6 @@ class PostListItem extends Component {
         if (Platform.OS === 'ios') {
             return (
                 <TouchableOpacity
-                    style={postItemStyle.itemTouchable}
                     onPress={onPressPostItem} >
                     {this.renderItemContent(postItemData)}
                 </TouchableOpacity>
@@ -54,7 +54,11 @@ class PostListItem extends Component {
 
     renderItemContent(postItemData) {
         var imageUrl = postItemData._embedded["wp:featuredmedia"][0].media_details.sizes["thumbnail"].source_url;
-
+        let title = "";
+        if (postItemData && postItemData.title && postItemData.title.rendered) {
+            title = decodeHtmlEntity(postItemData.title.rendered);
+            // title = postItemData.title.rendered
+        }
         return (
             <View
                 style={postItemStyle.itemTouchable}>
@@ -71,11 +75,13 @@ class PostListItem extends Component {
                 </ImageBackground>
 
                 <Text style={postItemStyle.itemTitle}>
-                    {postItemData.title.rendered}
+                    {title}
                 </Text>
             </View>
         )
     }
+
+
 }
 
 export default PostListItem;

@@ -3,17 +3,21 @@ import {
     createMaterialTopTabNavigator
 } from "react-navigation";
 import React from "react";
-import { Image, TouchableOpacity } from 'react-native';
 
 import { collapsibleOptionsForTab, collapsibleTabConfig } from 'react-navigation-collapsible';
-import { ScreenTitles } from "../values";
+import { ScreenTitles, COINTIKO_HEADER_TINT_COLOR, COINTIKO_HEADER_COLOR } from "../values";
 import {
     HomeScreen, MarketScreen, ConverterScreen,
-    AboutScreen,
-    PostDetailScreen,
-    BlockchainScreen
+    AboutScreen, PostDetailScreen, BlockchainScreen,
+    CryptocurrencyScreen,
+    MiningScreen,
+    NewsScreen,
+    WalletsScreen
 } from "../screens";
 import Sidemenu from "./SideMenu";
+import { DrawerButton } from "../components/buttons";
+import { appHeaderStyle } from '../styles';
+import TradingScreen from "../screens/TradingScreen";
 
 
 
@@ -37,7 +41,7 @@ const HomeTabStack = createMaterialTopTabNavigator(
         navigationOptions: {
             tabBarOptions: {
                 indicatorStyle: { backgroundColor: 'white' },
-                style: { backgroundColor: 'blue' },
+                style: { backgroundColor: COINTIKO_HEADER_COLOR },
                 scrollEnabled: true
             }
         }
@@ -52,54 +56,61 @@ const HomeStack = createStackNavigator({
         navigationOptions: props => collapsibleOptionsForTab(props,
             {
                 title: ScreenTitles.TITLE_HOME_SCREEN,
-                headerStyle: { backgroundColor: 'blue' },
-                headerTintColor: 'white',
+                headerStyle: { backgroundColor: COINTIKO_HEADER_COLOR },
+                headerTintColor: COINTIKO_HEADER_TINT_COLOR,
                 headerLeft: (
-                    <TouchableOpacity
-                        onPress={() => props.navigation.openDrawer()}
-                    >
-                        <Image
-                            source={require('../images/icon_menu_white.png')}
-                            style={{ width: 24, height: 24, marginLeft: 12 }}
-                        />
-                    </TouchableOpacity>
+                    <DrawerButton
+                        onPressButton={() => props.navigation.openDrawer()}
+                    />
                 )
             })
     },
 
+    BlockchainScreen: {
+        screen: BlockchainScreen,
+    },
+
     PostDetailScreen: {
         screen: PostDetailScreen,
-        navigationOptions: {
-            title: 'Details'
-        }
     },
+
+    CryptocurrencyScreen: {
+        screen: CryptocurrencyScreen,
+
+    },
+    MiningScreen: {
+        screen: MiningScreen,
+
+    },
+    NewsScreen: {
+        screen: NewsScreen,
+
+    },
+    WalletsScreen: {
+        screen: WalletsScreen,
+
+    },
+    TradingScreen: {
+        screen: TradingScreen,
+
+    },
+
+
     AboutScreen: {
         screen: AboutScreen,
         navigationOptions: {
             title: ScreenTitles.TITLE_ABOUT_SCREEN
         }
     },
-})
+}, {
+        initialRouteName: 'HomeTabStack'
+    });
 
-const BlockchainStack = createStackNavigator({
-    BlockchainScreen: {
-        screen: BlockchainScreen,
-        navigationOptions:
-        {
-            title: ScreenTitles.TITLE_BLOCKCHAIN_SCREEN,
-            headerStyle: { backgroundColor: 'blue' },
-            headerTintColor: 'white',
-            // headerLeft: (
-            //     <TouchableOpacity
-            //         onPress={() => props.navigation.openDrawer()}
-            //     >
-            //         <Image
-            //             source={require('../images/icon_menu_white.png')}
-            //             style={{ width: 24, height: 24, marginLeft: 12 }}
-            //         />
-            //     </TouchableOpacity>
-            // )
-        }
+
+
+const CryptocurrencyStack = createStackNavigator({
+    CryptocurrencyScreen: {
+        screen: CryptocurrencyScreen,
     }
 });
 
@@ -110,9 +121,6 @@ export const AppStack = createDrawerNavigator(
         Home: {
             screen: HomeStack
         },
-        Blockchain: {
-            screen: BlockchainStack
-        }
 
     },
     {

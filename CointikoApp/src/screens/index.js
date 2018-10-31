@@ -4,10 +4,16 @@ import ConverterScreen from './ConverterScreen';
 import MarketScreen from './MarketScreen';
 import PostDetailScreen from './PostDetailScreen';
 import BlockchainScreen from './BlockchainScreen';
-
+import CryptocurrencyScreen from './CryptocurrencyScreen'
+import MiningScreen from './MiningScreen';
+import NewsScreen from './NewsScreen';
+import WalletsScreen from './WalletsScreen';
+import TradingScreen from './TradingScreen';
 
 export {
     ConverterScreen, HomeScreen,
     AboutScreen, MarketScreen,
-    PostDetailScreen, BlockchainScreen
+    PostDetailScreen, BlockchainScreen,
+    CryptocurrencyScreen, MiningScreen,
+    NewsScreen, WalletsScreen
 };

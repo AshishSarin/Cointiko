@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { DRAWER_FOOTER_COLOR } from '../values';
+import { DRAWER_FOOTER_COLOR, LIST_BACKGROUND_COLOR } from '../values';
 
 export const postItemStyle = StyleSheet.create({
     itemContainer: {
@@ -25,11 +25,19 @@ export const postItemStyle = StyleSheet.create({
     }
 });
 
+export const postListFooterStyle = {
+    footerContainer: {
+        height: 100,
+        backgroundColor: LIST_BACKGROUND_COLOR,
+        justifyContent: 'center',
+        alignItems: 'center'
+    }
+}
 
 
 export const featuredPostItemStyle = StyleSheet.create({
     container: {
-        paddingHorizontal: 12,
+        paddingHorizontal: 16,
         paddingVertical: 6,
         flex: 1,
     },

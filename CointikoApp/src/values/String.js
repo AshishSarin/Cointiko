@@ -1,7 +1,7 @@
 export const ScreenTitles = {
     TITLE_HOME_SCREEN: 'Coinitko',
     TITLE_ABOUT_SCREEN: 'About Us',
-    TITLE_NEWS_TAB: 'News',
+    TITLE_UPDATES_TAB: 'Updates',
     TITLE_LIVE_PRICES_TAB: 'Live Prices',
     TITLE_BLOCKCHAIN_SCREEN: 'Blockchain',
     TITLE_CRYPTOCURRENCY_SCREEN: 'Cryptocurrency 101',

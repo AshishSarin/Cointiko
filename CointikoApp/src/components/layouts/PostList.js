@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text, FlatList, ImageBackground, ActivityIndicator, TouchableOpacity, Animated, Image, StyleSheet } from 'react-native';
+import { View, Text, FlatList, RefreshControl, ImageBackground, ActivityIndicator, TouchableOpacity, Animated, Image, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import { withCollapsible } from 'react-navigation-collapsible';
 import { updatePostList } from '../../actions';
@@ -21,7 +21,19 @@ class PostList extends Component {
         super(props);
 
         this.fetchPostList();
+        this.state = {
+            refreshing: false,
+        };
     }
+
+
+    _onRefresh = () => {
+        this.setState({ refreshing: true });
+        setTimeout(() => {
+            this.setState({ refreshing: false });
+        }, 10000);
+    }
+
 
     render() {
         if (this.props.errorPostLoading && this.props.postList.length === 0) {
@@ -114,6 +126,12 @@ class PostList extends Component {
         const { categoryCode } = this.props;
         return (
             <FlatList
+                refreshControl={
+                    <RefreshControl
+                        refreshing={this.state.refreshing}
+                        onRefresh={this._onRefresh}
+                    />
+                }
                 style={postListStyle.postListContainer}
                 data={this.getBlocklist(categoryCode)}
                 renderItem={this.renderItem}

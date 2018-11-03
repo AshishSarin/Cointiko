@@ -13,7 +13,7 @@ import { CointikoStatusBar } from "../components/widgets";
 class HomeScreen extends Component {
 
     static navigationOptions = {
-        title: ScreenTitles.TITLE_NEWS_TAB,
+        title: ScreenTitles.TITLE_UPDATES_TAB,
     };
 
     render() {

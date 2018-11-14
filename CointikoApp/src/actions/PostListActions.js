@@ -32,6 +32,12 @@ export const updatePostList = (offset) => {
     }
 }
 
+export const savePost = (postId) => {
+    return {
+        type: PostListActions.SAVE_POST,
+        payload: postId
+    }
+}
 
 
 

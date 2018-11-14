@@ -5,6 +5,8 @@ export const PostListActions = {
     UPDATE_POST_LIST_SUCCESS: 'update_post_list_success',
     UPDATE_POST_LIST_FAIL: 'update_post_list_fail',
 
+    SAVE_POST: 'save_post'
+
 }
 
 

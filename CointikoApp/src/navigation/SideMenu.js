@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import {
-    ScrollView, View, Text,
-    TouchableOpacity, Image,
-    FlatList
+    ScrollView, FlatList
 } from 'react-native';
 import { SafeAreaView, NavigationActions } from 'react-navigation';
 import { drawerStyle } from '../styles';

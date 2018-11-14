@@ -20,7 +20,7 @@ class HomeScreen extends Component {
 
         const { paddingHeight, scrollY, onScroll } = this.props.collapsible;
         return (
-            <View style={{ flex: 1 }}>
+            <View style={{ flex: 1, paddingTop: 0 }}>
                 <CointikoStatusBar />
                 <PostList
                     navigate={this.props.navigation.navigate}
@@ -38,6 +38,7 @@ class HomeScreen extends Component {
 
 const mapStateTopProps = (state) => {
     const { postList, isPostListLoading, featuredPostList, isAllPostLoaded, errorPostLoading } = state.posts;
+
     return { postList, isPostListLoading, featuredPostList, isAllPostLoaded, errorPostLoading };
 }
 

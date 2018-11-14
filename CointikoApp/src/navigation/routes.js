@@ -16,7 +16,6 @@ import {
 } from "../screens";
 import Sidemenu from "./SideMenu";
 import { DrawerButton } from "../components/buttons";
-import { appHeaderStyle } from '../styles';
 import TradingScreen from "../screens/TradingScreen";
 
 

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { View, Text, FlatList, RefreshControl, ImageBackground, ActivityIndicator, TouchableOpacity, Animated, Image, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import { withCollapsible } from 'react-navigation-collapsible';
-import { updatePostList } from '../../actions';
+import { updatePostList, savePost } from '../../actions';
 
 
 
@@ -24,6 +24,8 @@ class PostList extends Component {
         this.state = {
             refreshing: false,
         };
+        console.warn('SavePostList', this.props.savePostList);
+
     }
 
 
@@ -31,7 +33,7 @@ class PostList extends Component {
         this.setState({ refreshing: true });
         setTimeout(() => {
             this.setState({ refreshing: false });
-        }, 10000);
+        }, 5000);
     }
 
 
@@ -106,19 +108,28 @@ class PostList extends Component {
     renderPostListForHome() {
         const { paddingHeight, onScroll, scrollY } = this.props;
         return (
-            <AnimatedFlatList
-                style={postListStyle.postListContainer}
-                data={this.props.postList}
-                renderItem={this.renderItem}
-                keyExtractor={(item, index) => String(index)}
-                contentContainerStyle={{ paddingTop: paddingHeight }}
-                scrollIndicatorInsets={{ top: paddingHeight }}
-                _mustAddThis={scrollY}
-                ListFooterComponent={this.renderPostListFooter.bind(this)}
-                onScroll={onScroll}
-                onEndReachedThreshold={0.1}
-                onEndReached={this.onLazyLoadPostList.bind(this)}
-            />
+            <View style={{ flex: 1, marginTop: 12 }}>
+                <AnimatedFlatList
+                    style={postListStyle.postListContainer}
+                    data={this.props.postList}
+                    renderItem={this.renderItem}
+                    // refreshControl={
+                    //     <RefreshControl
+                    //         refreshing={this.state.refreshing}
+                    //         onRefresh={this._onRefresh}
+                    //         progressViewOffset={100}
+                    //     />
+                    // }
+                    keyExtractor={(item, index) => String(index)}
+                    contentContainerStyle={{ paddingTop: paddingHeight }}
+                    scrollIndicatorInsets={{ top: paddingHeight }}
+                    _mustAddThis={scrollY}
+                    ListFooterComponent={this.renderPostListFooter.bind(this)}
+                    onScroll={onScroll}
+                    onEndReachedThreshold={0.1}
+                    onEndReached={this.onLazyLoadPostList.bind(this)}
+                />
+            </View>
         );
     }
 
@@ -153,6 +164,9 @@ class PostList extends Component {
         navigate('PostDetailScreen', {
             id: postId
         });
+
+        this.props.savePost(postId);
+
     }
 
 
@@ -226,13 +240,14 @@ class PostList extends Component {
 
 
 const mapStateToProps = (state) => {
-
+    console.log('State', state);
     const {
         postList, isPostListLoading,
         featuredPostList, isAllPostLoaded,
         errorPostLoading } = state.posts;
+    const { savePostList } = state.save;
     return {
-        postList, isPostListLoading,
+        postList, isPostListLoading, savePostList,
         featuredPostList, isAllPostLoaded,
         errorPostLoading
     };
@@ -240,5 +255,6 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps, {
-    updatePostList
+    updatePostList,
+    savePost
 })(PostList)

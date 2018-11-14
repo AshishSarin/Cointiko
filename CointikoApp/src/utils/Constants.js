@@ -18,4 +18,15 @@ export const PostCategoriesCodes = {
     NEWS: 72,
     WALLETS: 81,
     TRADING: 102
-} 
+}
+
+
+export const CryptoCoinIds = {
+    BITCOIN: "-400",
+    ETHEREUM: "-402",
+    BITCOIN_CASH: "-403",
+    XRP: "-404",
+    LITECOIN: "-405",
+    CARDANO: "-406",
+    IOTA: "-407"
+}

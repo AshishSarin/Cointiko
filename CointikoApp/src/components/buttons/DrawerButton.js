@@ -3,7 +3,6 @@ import {
     TouchableOpacity, TouchableNativeFeedback,
     Image, View, Platform
 } from 'react-native';
-import { NavigationActions } from 'react-navigation';
 
 
 

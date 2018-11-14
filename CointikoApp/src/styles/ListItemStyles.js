@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { DRAWER_FOOTER_COLOR, LIST_BACKGROUND_COLOR } from '../values';
+import { LIST_BACKGROUND_COLOR } from '../values';
 
 export const postItemStyle = StyleSheet.create({
     itemContainer: {
@@ -22,6 +22,7 @@ export const postItemStyle = StyleSheet.create({
         flex: 1,
         marginLeft: 12,
         fontSize: 14,
+        color: 'black'
     }
 });
 
@@ -62,5 +63,42 @@ export const featuredPostItemStyle = StyleSheet.create({
     itemTitle: {
         color: 'white',
         fontSize: 16,
+    }
+})
+
+
+export const coinItemStyle = StyleSheet.create({
+    itemContainer: {
+        width: "100%",
+        height: 50,
+        alignItems: 'center',
+        flexDirection: "row",
+        backgroundColor: 'white'
+
+    },
+
+    coinInfo: {
+        flex: 4,
+        paddingLeft: 32,
+        flexDirection: 'row',
+        alignItems: 'center'
+    },
+
+    coinImage: {
+        height: 20,
+        width: 20
+    },
+
+    coinNameText: {
+        fontSize: 14,
+        marginLeft: 12,
+        color: 'black',
+    },
+
+    priceText: {
+        fontSize: 14,
+        flex: 3,
+        color: 'black',
+        paddingLeft: 32
     }
 })

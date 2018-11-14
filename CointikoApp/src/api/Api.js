@@ -1,7 +1,7 @@
 import { URLConstants } from "./UrlConstants";
 
 
-const LIMIT_PER_PAGE = 30
+const LIMIT_PER_PAGE = 30;
 export const fetchPosts = (offset, categoryCode) => {
     var postUrl = URLConstants.GET_POSTS + "?per_page="
         + LIMIT_PER_PAGE + "&offset="

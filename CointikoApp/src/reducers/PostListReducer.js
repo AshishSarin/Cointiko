@@ -4,7 +4,7 @@ import { PostListActions } from "../actions/Types";
 const INITIAL_STATE = {
     // initial state objects for home post list
     postList: [], featuredPostList: [], isPostListLoading: false,
-    errorPostLoading: "", isAllPostLoaded: false,
+    errorPostLoading: "", isAllPostLoaded: false
 }
 
 export default (state = INITIAL_STATE, action) => {
@@ -43,6 +43,7 @@ export default (state = INITIAL_STATE, action) => {
                 errorPostLoading: { $set: action.error }
             });
         // return { ...state, isPostListLoading: false, errorPostLoading: action.error };
+
         default:
             return state;
     }

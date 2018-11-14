@@ -6,6 +6,7 @@ import { postListFooterStyle } from '../../styles';
 
 export default class PostListFooter extends Component {
     render() {
+        console.log('rendering Postlistfooter');
         const { isPostLoading, msg } = this.props;
         return (
             <View style={postListFooterStyle.footerContainer}>

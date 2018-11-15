@@ -3,7 +3,7 @@ import { URLConstants } from "./UrlConstants";
 
 const LIMIT_PER_PAGE = 30;
 export const fetchPosts = (offset, categoryCode) => {
-    var postUrl = URLConstants.GET_POSTS + "?per_page="
+    let postUrl = URLConstants.GET_POSTS + "?per_page="
         + LIMIT_PER_PAGE + "&offset="
         + offset
         + (categoryCode ? "&categories=" + categoryCode : "")
@@ -13,6 +13,20 @@ export const fetchPosts = (offset, categoryCode) => {
         method: 'GET'
     }).then(response => {
         console.log('fetchPost API Response', response);
+        return response;
+    }).catch(error => {
+        console.log('fetchPost API Error', error);
+    })
+}
+
+
+export const fetchCoinPrices = () => {
+    let coinPriceUrl = URLConstants.COIN_PRICES + '?fsyms=BTC,ETH,BCH,XRP,LTC,ADA,IOTA&tsyms=USD';
+    console.log('fetchCoinPrices API Called', coinPriceUrl);
+    return fetch(coinPriceUrl, {
+        method: 'GET'
+    }).then(response => {
+        console.log('fetchCoin API Response', response);
         return response;
     }).catch(error => {
         console.log('fetchPost API Error', error);

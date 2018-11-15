@@ -6,7 +6,6 @@ import { ErrorMsg } from "../values";
 
 
 export const updatePostList = (offset) => {
-    // return { type: NewsListActions.UPDATE_NEWS_LIST_SUCCESS };
     return (dispatch) => {
         console.log('updateNewsList called');
         dispatch({ type: PostListActions.UPDATE_POST_LIST });

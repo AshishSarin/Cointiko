@@ -25,7 +25,8 @@ export const DrawerItemsLabels = {
 }
 
 export const ErrorMsg = {
-    ERROR_FETCH_POST: "Error in fetching posts. Try again"
+    ERROR_FETCH_POST: "Error in fetching posts. Try again",
+    ERROR_FETCH_COIN_PRICES: "Error in updating prices. Try again"
 }
 
 export const ButtonLabels = {

@@ -30,3 +30,4 @@ export const CryptoCoinIds = {
     CARDANO: "-406",
     IOTA: "-407"
 }
+

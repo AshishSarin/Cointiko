@@ -1,4 +1,4 @@
-import { fetchPosts, fetchBlockPosts } from "../api";
+import { fetchPosts } from "../api";
 import { GetPostCodes } from "../utils";
 import { ErrorMsg } from "../values";
 

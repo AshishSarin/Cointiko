@@ -19,7 +19,7 @@ const DRAWER_ITEMS = [
     { id: DrawerItemsIds.DRAWER_ITEM_WALLETS, title: DrawerItemsLabels.DRAWER_ITEM_WALLETS, routeName: 'WalletsScreen' },
     { id: DrawerItemsIds.DRAWER_ITEM_TRADING, title: DrawerItemsLabels.DRAWER_ITEM_TRADING, routeName: 'TradingScreen' },
     { id: DrawerItemsIds.DRAWER_ITEM_ABOUT, title: DrawerItemsLabels.DRAWER_ITEM_ABOUT, routeName: 'AboutScreen' },
-    { id: DrawerItemsIds.DRAWER_ITEM_CONTACT, title: DrawerItemsLabels.DRAWER_ITEM_CONTACT, routeName: 'AboutScreen' }
+    // { id: DrawerItemsIds.DRAWER_ITEM_CONTACT, title: DrawerItemsLabels.DRAWER_ITEM_CONTACT, routeName: 'AboutScreen' }
 ]
 
 export default class Sidemenu extends Component {

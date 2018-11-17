@@ -9,6 +9,7 @@ export default class CoinItem extends Component {
 
         const { coinData } = this.props;
         let coinImage = this.getCoinImage(coinData.id);
+        let priceChangeColor = coinData.change >= 0 ? 'green' : 'red'
         return (
             <View
                 style={coinItemStyle.itemContainer}
@@ -21,9 +22,14 @@ export default class CoinItem extends Component {
                         {coinData.coinName}
                     </Text>
                 </View>
-                <Text style={coinItemStyle.priceText}>
-                    {coinData.coinPrice}
-                </Text>
+                <View style={coinItemStyle.coinPriceInfo}>
+                    <Text style={coinItemStyle.priceText}>
+                        {"$ " + Number((coinData.coinPrice).toFixed(4))}
+                    </Text>
+                    <Text style={[coinItemStyle.priceChangeText, { color: priceChangeColor }]}>
+                        {"(" + Number((coinData.change).toFixed(2)) + " %)"}
+                    </Text>
+                </View>
             </View>
         );
     }

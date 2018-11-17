@@ -30,6 +30,12 @@ export const updateCoinPrices = () => {
     }
 }
 
+export const clearCoinPriceError = () => {
+    return {
+        type: CoinActions.CLEAR_ERROR_COIN_PRICE
+    }
+}
+
 
 const updateCoinPriceFail = (dispatch, errMsg) => {
     dispatch({ type: CoinActions.UPDATE_COIN_PRICE_LIST_FAIL, error: errMsg });

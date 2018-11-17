@@ -5,7 +5,7 @@ export const postItemStyle = StyleSheet.create({
     itemContainer: {
         flex: 1,
         marginHorizontal: 16,
-        marginBottom: 16,
+        marginBottom: 0,
         backgroundColor: 'white',
     },
 
@@ -78,10 +78,17 @@ export const coinItemStyle = StyleSheet.create({
     },
 
     coinInfo: {
-        flex: 4,
+        flex: 2,
         paddingLeft: 32,
         flexDirection: 'row',
-        alignItems: 'center'
+        alignItems: 'center',
+    },
+
+    coinPriceInfo: {
+        flex: 4,
+        paddingLeft: 0,
+        flexDirection: 'row',
+        alignItems: 'center',
     },
 
     coinImage: {
@@ -97,8 +104,14 @@ export const coinItemStyle = StyleSheet.create({
 
     priceText: {
         fontSize: 14,
-        flex: 3,
         color: 'black',
-        paddingLeft: 32
+        paddingLeft: 24,
+        width: 100,
+    },
+
+    priceChangeText: {
+        fontSize: 14,
+        color: 'green',
+        paddingLeft: 8
     }
 })

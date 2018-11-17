@@ -8,7 +8,7 @@ export const postListStyle = StyleSheet.create({
     postListContainer: {
         flex: 1,
         backgroundColor: LIST_BACKGROUND_COLOR,
-        paddingTop: 16
+        paddingTop: 16,
     },
 
     initialLoaderCointainer: {

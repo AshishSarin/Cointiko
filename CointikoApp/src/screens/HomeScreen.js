@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, StatusBar } from 'react-native';
+import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import { withCollapsible } from 'react-navigation-collapsible';
 import { updateDemoState } from '../actions/HomeActions';
@@ -29,6 +29,18 @@ class HomeScreen extends Component {
                     scrollY={scrollY}
                     onScroll={onScroll}
                 />
+                <View
+                    style={{
+                        position: 'absolute', bottom: 0, backgroundColor: '#27343a',
+                        paddingVertical: 4,
+                        alignItems: 'center', justifyContent: 'center', width: "100%"
+                    }}>
+                    <Text style={{
+                        fontSize: 12, color: 'white',
+                    }}>
+                        {'Copyright © 2018'}
+                    </Text>
+                </View>
             </View>
         );
 

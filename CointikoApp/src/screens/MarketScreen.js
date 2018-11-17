@@ -4,11 +4,13 @@ import {
     TouchableOpacity, Animated,
     Image, StyleSheet, RefreshControl
 } from 'react-native';
-
+import { connect } from 'react-redux';
 import { withCollapsible } from 'react-navigation-collapsible';
 import { ScreenTitles } from "../values";
-import { PostListFooter, CoinItem } from "../components/listItems";
-import { CryptoCoinIds } from "../utils";
+import { CoinItem, PostItemSeperator } from "../components/listItems";
+import { updateCoinPrices, clearCoinPriceError } from '../actions'
+import Toast, { DURATION } from 'react-native-easy-toast'
+
 
 const AnimatedFlatList = Animated.createAnimatedComponent(FlatList);
 
@@ -21,28 +23,7 @@ class MarketScreen extends Component {
     constructor(props) {
         super(props);
 
-        const data = [
-            { id: CryptoCoinIds.BITCOIN, coinName: "Bitcoin", coinPrice: "$199.56" },
-            { id: CryptoCoinIds.ETHEREUM, coinName: "Ethereum", coinPrice: "$0.4645" },
-            { id: CryptoCoinIds.BITCOIN_CASH, coinName: "Bitcoin Cash", coinPrice: "$1148.89" },
-            { id: CryptoCoinIds.XRP, coinName: "XRP", coinPrice: "$562.98" },
-            { id: CryptoCoinIds.LITECOIN, coinName: "Litecoin", coinPrice: "$9879.55" },
-            { id: CryptoCoinIds.CARDANO, coinName: "Cardano", coinPrice: "$65.56" },
-            { id: CryptoCoinIds.IOTA, coinName: "IOTA", coinPrice: "$ 12.23" },
-            { id: CryptoCoinIds.BITCOIN, coinName: "Bitcoin", coinPrice: "$199.56" },
-            { id: CryptoCoinIds.ETHEREUM, coinName: "Ethereum", coinPrice: "$0.4645" },
-            { id: CryptoCoinIds.BITCOIN_CASH, coinName: "Bitcoin Cash", coinPrice: "$1148.89" },
-            { id: CryptoCoinIds.XRP, coinName: "XRP", coinPrice: "$562.98" },
-            { id: CryptoCoinIds.LITECOIN, coinName: "Litecoin", coinPrice: "$9879.55" },
-            { id: CryptoCoinIds.CARDANO, coinName: "Cardano", coinPrice: "$65.56" },
-            { id: CryptoCoinIds.IOTA, coinName: "IOTA", coinPrice: "$ 12.23" }
-        ];
-
-        1
-        this.state = {
-            data: data,
-            refreshing: false,
-        }
+        this.props.updateCoinPrices();
     }
 
     renderCoinItem = ({ item, index }) => {
@@ -52,13 +33,17 @@ class MarketScreen extends Component {
     }
 
     _onRefresh = () => {
-        this.setState({ refreshing: true });
-        setTimeout(() => {
-            this.setState({ refreshing: false });
-        }, 3000);
+        this.props.updateCoinPrices();
     }
 
 
+    componentDidUpdate() {
+        if (this.props.errorCoinPriceLoading) {
+            this.refs.toast.show(this.props.errorCoinPriceLoading, 1000, () => {
+                this.props.clearCoinPriceError();
+            });
+        }
+    }
 
     render() {
 
@@ -68,6 +53,19 @@ class MarketScreen extends Component {
                 alignContent: 'center', paddingTop: 0
             }}>
                 {this.renderCoinPricesList()}
+                <View
+                    style={{
+                        position: 'absolute', bottom: 0, backgroundColor: '#27343a',
+                        paddingVertical: 4,
+                        alignItems: 'center', justifyContent: 'center', width: "100%"
+                    }}>
+                    <Text style={{
+                        fontSize: 12, color: 'white',
+                    }}>
+                        {'Copyright © 2018'}
+                    </Text>
+                </View>
+                <Toast ref="toast" />
             </View>
         );
     }
@@ -79,10 +77,10 @@ class MarketScreen extends Component {
         return (
             <AnimatedFlatList
                 style={{ flex: 1 }}
-                data={this.state.data}
+                data={this.props.coinPriceList}
                 refreshControl={
                     <RefreshControl
-                        refreshing={this.state.refreshing}
+                        refreshing={this.props.isCoinPricesLoading}
                         onRefresh={this._onRefresh}
                         progressViewOffset={80}
                     />
@@ -93,12 +91,26 @@ class MarketScreen extends Component {
                 scrollIndicatorInsets={{ top: paddingHeight }}
                 _mustAddThis={scrollY}
                 onScroll={onScroll}
-                ItemSeparatorComponent={() => <PostListFooter />}
+                ItemSeparatorComponent={() => <PostItemSeperator />}
             />
         )
     }
 }
 
+const mapStateTopProps = (state) => {
+    const { errorCoinPriceLoading, isCoinPricesLoading, coinPriceList } = state.coin;
+    return {
+        errorCoinPriceLoading,
+        isCoinPricesLoading,
+        coinPriceList
+    };
+}
 
 
-export default withCollapsible(MarketScreen, { iOSCollapsedColor: '#031' });
+const MarketScreenConnect = connect(mapStateTopProps, {
+    updateCoinPrices,
+    clearCoinPriceError
+})(MarketScreen)
+
+
+export default withCollapsible(MarketScreenConnect, { iOSCollapsedColor: '#031' });

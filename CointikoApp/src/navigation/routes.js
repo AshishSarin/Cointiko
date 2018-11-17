@@ -31,9 +31,9 @@ const HomeTabStack = createMaterialTopTabNavigator(
 
         },
 
-        ConverterScreen: {
-            screen: ConverterScreen
-        },
+        // ConverterScreen: {
+        //     screen: ConverterScreen
+        // },
 
     },
     collapsibleTabConfig({
@@ -41,7 +41,7 @@ const HomeTabStack = createMaterialTopTabNavigator(
             tabBarOptions: {
                 indicatorStyle: { backgroundColor: 'white' },
                 style: { backgroundColor: COINTIKO_HEADER_COLOR },
-                scrollEnabled: true
+                scrollEnabled: false
             }
         }
     })
@@ -97,9 +97,9 @@ const HomeStack = createStackNavigator({
 
     AboutScreen: {
         screen: AboutScreen,
-        navigationOptions: {
-            title: ScreenTitles.TITLE_ABOUT_SCREEN
-        }
+        // navigationOptions: {
+        //     title: ScreenTitles.TITLE_ABOUT_SCREEN
+        // }
     },
 }, {
         initialRouteName: 'HomeTabStack'

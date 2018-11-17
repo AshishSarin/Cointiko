@@ -78,7 +78,7 @@ class PostList extends Component {
         }
         return <PostListItem
             style={(index === 1 && categoryCode === PostCategoriesCodes.HOME) ?
-                { marginTop: 24 } : {}}
+                { marginTop: 24 } : { marginTop: 16 }}
             onPressPostItem={this.onPressPostItem.bind(this, item.id)}
             postItemData={item}
         />
@@ -209,7 +209,6 @@ class PostList extends Component {
     }
 
     renderPostListFooter() {
-        console.log('this.isAllposloaed', this.props.isAllPostLoaded);
         if (this.props.isAllPostLoaded) {
             return (
                 <PostListFooter
@@ -240,7 +239,6 @@ class PostList extends Component {
 
 
 const mapStateToProps = (state) => {
-    console.log('State', state);
     const {
         postList, isPostListLoading,
         featuredPostList, isAllPostLoaded,

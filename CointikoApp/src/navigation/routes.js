@@ -55,7 +55,8 @@ const HomeStack = createStackNavigator({
         navigationOptions: props => collapsibleOptionsForTab(props,
             {
                 title: ScreenTitles.TITLE_HOME_SCREEN,
-                headerStyle: { backgroundColor: COINTIKO_HEADER_COLOR },
+                headerTitleStyle: { marginLeft: -5 },
+                headerStyle: { backgroundColor: COINTIKO_HEADER_COLOR, marginLeft: 0 },
                 headerTintColor: COINTIKO_HEADER_TINT_COLOR,
                 headerLeft: (
                     <DrawerButton

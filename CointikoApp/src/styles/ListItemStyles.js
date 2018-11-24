@@ -112,6 +112,6 @@ export const coinItemStyle = StyleSheet.create({
     priceChangeText: {
         fontSize: 14,
         color: 'green',
-        paddingLeft: 8
+        paddingLeft: 0
     }
 })

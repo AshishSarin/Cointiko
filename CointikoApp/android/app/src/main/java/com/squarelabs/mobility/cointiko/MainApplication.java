@@ -1,4 +1,4 @@
-package com.cointikoapp;
+package com.squarelabs.mobility.cointiko;
 
 import android.app.Application;
 

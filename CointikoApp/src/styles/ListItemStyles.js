@@ -13,16 +13,32 @@ export const postItemStyle = StyleSheet.create({
         flexDirection: 'row',
         height: 120,
         alignItems: 'center',
-        paddingHorizontal: 12
+        paddingHorizontal: 12,
+        paddingVertical: 20
     },
     itemThumbnail: {
         height: 80, width: 80, justifyContent: 'center', alignItems: 'center',
     },
-    itemTitle: {
+
+    itemInfo: {
         flex: 1,
         marginLeft: 12,
+        justifyContent: 'space-between',
+        height: "100%",
+        width: "100%",
+    },
+
+    itemTitle: {
+        color: 'black',
         fontSize: 14,
-        color: 'black'
+
+    },
+
+    itemExtra: {
+        width: "100%",
+        flexDirection: 'row',
+        justifyContent: 'flex-end'
+
     }
 });
 

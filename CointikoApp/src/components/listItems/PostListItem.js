@@ -74,9 +74,20 @@ class PostListItem extends Component {
                     <CointikoProgressBar size={"small"} animating={this.state.isImageLoading} />
                 </ImageBackground>
 
-                <Text style={postItemStyle.itemTitle}>
-                    {title}
-                </Text>
+                <View style={postItemStyle.itemInfo}>
+                    <Text
+                        numberOfLines={3}
+                        style={postItemStyle.itemTitle}>
+                        {title}
+                    </Text>
+                    <View style={postItemStyle.itemExtra}>
+                        <Text>hi</Text>
+                        <Text>hi</Text>
+                        <Text>hi</Text>
+                    </View>
+                </View>
+
+
             </View>
         )
     }

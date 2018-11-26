@@ -22,8 +22,10 @@ export const postListStyle = StyleSheet.create({
 export const postDetailStyle = StyleSheet.create({
     container: {
         flex: 1,
+        paddingTop: 12,
         paddingHorizontal: 24,
-        marginTop: 12
+        marginTop: 0,
+        backgroundColor: 'white'
     },
 
     postMetaData: {
@@ -34,7 +36,8 @@ export const postDetailStyle = StyleSheet.create({
     postImage: {
         marginTop: 14,
         width: "100%",
-        height: 200
+        height: 200,
+        marginBottom: 14
     },
 
     postTitle: {

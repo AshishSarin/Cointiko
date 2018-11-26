@@ -3,6 +3,9 @@ import {
     createMaterialTopTabNavigator
 } from "react-navigation";
 import React from "react";
+import { Image } from 'react-native';
+import { Header } from 'react-navigation';
+
 
 import { collapsibleOptionsForTab, collapsibleTabConfig } from 'react-navigation-collapsible';
 import { ScreenTitles, COINTIKO_HEADER_TINT_COLOR, COINTIKO_HEADER_COLOR } from "../values";
@@ -39,8 +42,9 @@ const HomeTabStack = createMaterialTopTabNavigator(
     collapsibleTabConfig({
         navigationOptions: {
             tabBarOptions: {
-                indicatorStyle: { backgroundColor: 'white' },
-                style: { backgroundColor: COINTIKO_HEADER_COLOR },
+                indicatorStyle: { backgroundColor: '#3997F7' },
+                labelStyle: { color: 'black' },
+                style: { backgroundColor: COINTIKO_HEADER_COLOR, color: 'black' },
                 scrollEnabled: false
             }
         }
@@ -54,13 +58,22 @@ const HomeStack = createStackNavigator({
         screen: HomeTabStack,
         navigationOptions: props => collapsibleOptionsForTab(props,
             {
-                title: ScreenTitles.TITLE_HOME_SCREEN,
-                headerTitleStyle: { marginLeft: -5 },
+                // title: ScreenTitles.TITLE_HOME_SCREEN,
+                headerTitleStyle: { alignItem: 'center', justifyContent: 'center' },
+                headerTitle:
+                    <Image
+                        style={{ width: (Header.HEIGHT - 20) * 3.4379, height: (Header.HEIGHT - 20) }}
+                        resizeMode="contain"
+                        source={require('../images/logo_cointiko.png')}
+                    />,
                 headerStyle: { backgroundColor: COINTIKO_HEADER_COLOR, marginLeft: 0 },
                 headerTintColor: COINTIKO_HEADER_TINT_COLOR,
                 headerLeft: (
                     <DrawerButton
-                        onPressButton={() => props.navigation.openDrawer()}
+                        onPressButton={() => {
+                            // console.warn(Header.HEIGHT);
+                            props.navigation.openDrawer();
+                        }}
                     />
                 )
             })

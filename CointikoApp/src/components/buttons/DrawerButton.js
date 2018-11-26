@@ -23,7 +23,7 @@ export default class DrawerButton extends Component {
                 onPress={onPressButton}
             >
                 <Image
-                    source={require('../../images/icon_menu_white.png')}
+                    source={require('../../images/icon_menu.png')}
                     style={{ width: 24, height: 24, marginLeft: 12 }}
                 />
             </TouchableOpacity>
@@ -39,7 +39,7 @@ export default class DrawerButton extends Component {
             >
                 <View>
                     <Image
-                        source={require('../../images/icon_menu_white.png')}
+                        source={require('../../images/icon_menu-1.png')}
                         style={{ width: 24, height: 24, marginLeft: 12 }}
                     />
                 </View>

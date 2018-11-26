@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import {
-    ScrollView, FlatList
+    ScrollView, FlatList, View, Image
 } from 'react-native';
 import { SafeAreaView, NavigationActions } from 'react-navigation';
 import { drawerStyle } from '../styles';
-import { DrawerItemsLabels } from '../values';
+import { DrawerItemsLabels, DRAWER_ITEM_SEPERATOR_COLOR, DRAWER_ITEM_COLOR } from '../values';
 import { DrawerItem } from '../components/listItems';
 import { DrawerItemsIds } from '../utils';
 import DrawerListFooter from '../components/listItems/DrawerListFooter';
 
+
+const logo_height = 70;
 
 const DRAWER_ITEMS = [
     { id: DrawerItemsIds.DRAWER_ITEM_HOME, title: DrawerItemsLabels.DRAWER_ITEM_HOME, routeName: 'HomeTabStack' },
@@ -33,11 +35,32 @@ export default class Sidemenu extends Component {
         // this.props.navigation.dispatch('')
     }
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            selectedItemId: DrawerItemsIds.DRAWER_ITEM_HOME,
+        }
+    }
+
     render() {
         return (
-            <ScrollView>
+            <ScrollView style={{ backgroundColor: DRAWER_ITEM_COLOR }}>
                 <SafeAreaView style={drawerStyle.drawerContainer}
                     forceInset={{ top: 'always', horizontal: 'never' }}>
+                    {/* <View>
+                        <View style={{
+                            width: "100%", height: 120,
+                            alignItems: 'center', justifyContent: 'center'
+                        }}>
+                            <Image
+                                style={{ height: logo_height, width: logo_height * 3.4379 }}
+                                source={require('../images/logo_cointiko_1.png')} />
+                        </View>
+                        <View style={{
+                            backgroundColor: DRAWER_ITEM_SEPERATOR_COLOR,
+                            height: 1, width: "100%"
+                        }}></View>
+                    </View> */}
                     {this.renderDrawerItemList()}
                 </SafeAreaView>
             </ScrollView>
@@ -54,8 +77,8 @@ export default class Sidemenu extends Component {
                 renderItem={({ item }) => {
                     return (
                         <DrawerItem
-                            onPressDrawerItem={this.onPressDrawerItem.bind(this, item.routeName)}
-                            itemImage={this.getDrawerItemImage(item.id)}
+                            onPressDrawerItem={this.onPressDrawerItem.bind(this, item)}
+                            isSelected={this.isItemSelected(item)}
                             drawerItem={item}
                         />
                     );
@@ -64,34 +87,19 @@ export default class Sidemenu extends Component {
         )
     }
 
-    onPressDrawerItem(routeName) {
-        this.navigateToScreen(routeName)
+    isItemSelected(item) {
+        return (item.id === this.state.selectedItemId);
     }
 
-    getDrawerItemImage(drawerItemId) {
-        switch (drawerItemId) {
-            case DrawerItemsIds.DRAWER_ITEM_HOME:
-                return require('../images/icon_drawer_item_home.png');
-            case DrawerItemsIds.DRAWER_ITEM_BLOCKCHAIN:
-                return require('../images/icon_drawer_item_blockchain.png');
-            case DrawerItemsIds.DRAWER_ITEM_CRYPTOCURRENCY:
-                return require('../images/icon_drawer_item_cryptocurrency.png');
-            case DrawerItemsIds.DRAWER_ITEM_MINING:
-                return require('../images/icon_drawer_item_mining.png');
-            case DrawerItemsIds.DRAWER_ITEM_NEWS:
-                return require('../images/icon_drawer_item_news.png');
-            case DrawerItemsIds.DRAWER_ITEM_WALLETS:
-                return require('../images/icon_drawer_item_wallets.png');
-            case DrawerItemsIds.DRAWER_ITEM_TRADING:
-                return require('../images/icon_drawer_item_trading.png');
-            case DrawerItemsIds.DRAWER_ITEM_ABOUT:
-                return require('../images/icon_drawer_item_about.png');
-            case DrawerItemsIds.DRAWER_ITEM_CONTACT:
-                return require('../images/icon_drawer_item_contact.png');
-            default:
-                return require('../images/icon_drawer_item_home.png');
-        }
+    onPressDrawerItem(item) {
+        this.setState({
+            ...this.state,
+            selectedItemId: item.id
+        });
+        this.navigateToScreen(item.routeName)
     }
+
+
 
 }
 

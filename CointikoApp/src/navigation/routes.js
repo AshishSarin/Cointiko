@@ -34,9 +34,9 @@ const HomeTabStack = createMaterialTopTabNavigator(
 
         },
 
-        // ConverterScreen: {
-        //     screen: ConverterScreen
-        // },
+        ConverterScreen: {
+            screen: ConverterScreen
+        },
 
     },
     collapsibleTabConfig({
@@ -45,7 +45,7 @@ const HomeTabStack = createMaterialTopTabNavigator(
                 indicatorStyle: { backgroundColor: '#3997F7' },
                 labelStyle: { color: 'black' },
                 style: { backgroundColor: COINTIKO_HEADER_COLOR, color: 'black' },
-                scrollEnabled: false
+                scrollEnabled: true
             }
         }
     })

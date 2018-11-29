@@ -1,8 +1,6 @@
 import { PostListActions } from "./Types";
 import { getLatestPost, getLatestBlockPost } from "../processors";
 import { GetPostCodes, PostCategoriesCodes } from "../utils";
-import { ErrorMsg } from "../values";
-
 
 
 export const updatePostList = (offset) => {
@@ -57,10 +55,10 @@ export const refreshPostList = (afterPostId) => {
     }
 }
 
-export const savePost = (postId) => {
+export const savePost = (post) => {
     return {
         type: PostListActions.SAVE_POST,
-        payload: postId
+        payload: post
     }
 }
 

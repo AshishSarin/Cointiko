@@ -1,32 +1,66 @@
 import React, { Component } from 'react';
-import { ScrollView, StyleSheet, View, Dimensions, Text, Image, WebView } from 'react-native';
+import { ScrollView, StyleSheet, View, TouchableOpacity, Text, Image, WebView } from 'react-native';
 import { connect } from 'react-redux';
 import HTMLView from 'react-native-htmlview';
 import { postDetailStyle } from '../styles';
 import { formatDate, decodeHtmlEntity } from '../utils/Utils';
 import { ScreenTitles, COINTIKO_HEADER_COLOR, COINTIKO_HEADER_TINT_COLOR } from '../values';
 import { CointikoStatusBar } from '../components/widgets';
+import { savePost } from '../actions';
 
 
 class PostDetailScreen extends Component {
 
-    static navigationOptions = {
-        title: ScreenTitles.TITLE_POST_DETAIL_SCREEN,
-        headerStyle: { backgroundColor: COINTIKO_HEADER_COLOR },
-        headerTintColor: COINTIKO_HEADER_TINT_COLOR,
+    static navigationOptions = ({ navigation }) => {
+        return {
+            title: ScreenTitles.TITLE_POST_DETAIL_SCREEN,
+            headerStyle: { backgroundColor: COINTIKO_HEADER_COLOR },
+            headerTintColor: COINTIKO_HEADER_TINT_COLOR,
+            headerRight: (
+                <View style={{ flexDirection: 'row' }}>
+                    <TouchableOpacity
+                        onPress={navigation.getParam('onPressSavePost')}
+                    >
+                        <Text>
+                            {navigation.getParam('_isPostSaved') ? 'saved' : 'save'}
+                        </Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        onPress={() => alert('Shared')}
+                    >
+                        <Text>Share</Text>
+                    </TouchableOpacity>
+                </View>
+            )
+        }
     };
 
     constructor(props) {
         super(props);
+        this.text = "saved";
         const { navigation } = this.props;
         const postId = navigation.getParam('id', 0);
 
         let data = this.props.postList.find(post => post.id === postId);
 
+        let _isSaved = this.isPostSaved(postId);
+
         this.state = {
-            postData: data
+            postData: data,
+            isSaved: _isSaved
         }
 
+    }
+
+    isPostSaved(postId) {
+        return this.props.savePostList.findIndex(postItem => postItem.id === postId) !== -1;
+    }
+
+    componentDidMount() {
+        this.props.navigation.setParams({
+            onPressSavePost: this.onPressSavePost,
+            _isPostSaved: this.state.isSaved
+        });
     }
 
     render() {
@@ -81,6 +115,12 @@ class PostDetailScreen extends Component {
         }
     }
 
+    onPressSavePost = () => {
+        console.warn('Saved')
+        this.props.savePost(this.state.postData);
+        this.props.navigation.setParams({ _isPostSaved: true })
+    };
+
 }
 
 const styles = StyleSheet.create({
@@ -93,8 +133,11 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state) => {
     const { postList } = state.posts;
-    return { postList };
+    const { savePostList } = state.save;
+    return { postList, savePostList };
 }
 
 
-export default connect(mapStateToProps, {})(PostDetailScreen)
+export default connect(mapStateToProps, {
+    savePost
+})(PostDetailScreen)

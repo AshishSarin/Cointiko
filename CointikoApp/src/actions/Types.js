@@ -9,7 +9,8 @@ export const PostListActions = {
     REFRESH_POST_LIST_SUCCESS: 'refresh_post_list_success',
     REFRESH_POST_LIST_FAIL: 'refresh_post_list_fail',
 
-    SAVE_POST: 'save_post'
+    SAVE_POST: 'save_post',
+    REMOVE_SAVED_POST: 'remove_saved_post'
 
 };
 

@@ -1,5 +1,10 @@
 import React, { Component } from "react";
-import { View, Text, FlatList, RefreshControl, ImageBackground, ActivityIndicator, TouchableOpacity, Animated, Image, StyleSheet } from 'react-native';
+import {
+    View, Text, FlatList, RefreshControl,
+    ImageBackground, ActivityIndicator,
+    TouchableOpacity, Animated,
+    Image, StyleSheet
+} from 'react-native';
 import { connect } from 'react-redux';
 import { withCollapsible } from 'react-navigation-collapsible';
 import { updatePostList, savePost } from '../../actions';
@@ -23,9 +28,8 @@ class PostList extends Component {
         this.fetchPostList();
         this.state = {
             refreshing: false,
+            isRefreshed: false,
         };
-        console.warn('SavePostList', this.props.savePostList);
-
     }
 
 
@@ -38,6 +42,11 @@ class PostList extends Component {
 
 
     render() {
+
+        if (this.props.isSavedList) {
+            return this.renderPostListForSaved();
+        }
+
         if (this.props.errorPostLoading && this.props.postList.length === 0) {
 
             // there is error in loading post list and also there is no post in the list
@@ -79,11 +88,17 @@ class PostList extends Component {
         return <PostListItem
             style={(index === 1 && categoryCode === PostCategoriesCodes.HOME) ?
                 { marginTop: 24 } : { marginTop: 16 }}
-            onPressPostItem={this.onPressPostItem.bind(this, item.id)}
+            isSaved={this.isPostSaved(item.id)}
             postItemData={item}
+            navigate={this.props.navigate}
+            isSavedList={this.props.isSavedList}
         />
     }
 
+
+    isPostSaved(postId) {
+        return this.props.savePostList.findIndex(postItem => postItem.id === postId) !== -1;
+    }
 
 
     renderRetry() {
@@ -100,7 +115,8 @@ class PostList extends Component {
         const { categoryCode } = this.props;
         if (categoryCode && categoryCode === PostCategoriesCodes.HOME) {
             return this.renderPostListForHome();
-        } else {
+        }
+        else {
             return this.renderPostListForCategory();
         }
     }
@@ -120,6 +136,7 @@ class PostList extends Component {
                     //         progressViewOffset={100}
                     //     />
                     // }
+                    // extraData={this.props.savePostList}
                     keyExtractor={(item, index) => String(index)}
                     contentContainerStyle={{ paddingTop: paddingHeight }}
                     scrollIndicatorInsets={{ top: paddingHeight }}
@@ -133,18 +150,54 @@ class PostList extends Component {
         );
     }
 
+
+    renderPostListForSaved() {
+        const { paddingHeight, onScroll, scrollY } = this.props;
+        if (this.props.savePostList.length > 0) {
+            return (
+                <View style={{ flex: 1, marginTop: 0, backgroundColor: 'blue' }}>
+                    <AnimatedFlatList
+                        style={[postListStyle.postListContainer, { paddingTop: 0 }]}
+                        data={this.props.savePostList}
+                        renderItem={this.renderItem}
+                        keyExtractor={(item, index) => String(index)}
+                        contentContainerStyle={{ paddingTop: paddingHeight }}
+                        scrollIndicatorInsets={{ top: paddingHeight }}
+                        _mustAddThis={scrollY}
+                        onScroll={onScroll}
+                    />
+                </View>
+            );
+        } else {
+            // render empty message
+            return this.renderEmptyForSaved();
+        }
+    }
+
+    renderEmptyForSaved() {
+        return (
+            <View style={{
+                flex: 1,
+                justifyContent: 'center', alignItems: 'center',
+                backgroundColor: LIST_BACKGROUND_COLOR
+            }}>
+                <Text>No saved posts here...</Text>
+            </View>
+        );
+    }
+
     renderPostListForCategory() {
         const { categoryCode } = this.props;
         return (
             <FlatList
-                refreshControl={
-                    <RefreshControl
-                        refreshing={this.state.refreshing}
-                        onRefresh={this._onRefresh}
-                    />
-                }
+                // refreshControl={
+                //     <RefreshControl
+                //         refreshing={this.state.refreshing}
+                //         onRefresh={this._onRefresh}
+                //     />
+                // }
                 style={postListStyle.postListContainer}
-                data={this.getBlocklist(categoryCode)}
+                data={this.getFilteredCategoryList(categoryCode)}
                 renderItem={this.renderItem}
                 keyExtractor={(item, index) => String(index)}
                 ListFooterComponent={this.renderPostListFooter.bind(this)}
@@ -165,7 +218,7 @@ class PostList extends Component {
             id: postId
         });
 
-        this.props.savePost(postId);
+        // this.props.savePost(postId);
 
     }
 
@@ -184,7 +237,7 @@ class PostList extends Component {
     }
 
 
-    getBlocklist(categoryCode) {
+    getFilteredCategoryList(categoryCode) {
         let filteredList = [];
         filteredList = this.props.postList.filter(postItem => {
             if (postItem.categories) {

@@ -55,10 +55,18 @@ export const refreshPostList = (afterPostId) => {
     }
 }
 
-export const savePost = (post) => {
+export const addToSavedPost = (post) => {
     return {
         type: PostListActions.SAVE_POST,
         payload: post
+    }
+}
+
+export const removeFromSavedPost = (postId) => {
+    console.warn('removeFromPost called', postId);
+    return {
+        type: PostListActions.REMOVE_SAVED_POST,
+        payload: postId
     }
 }
 

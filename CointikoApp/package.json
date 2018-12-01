@@ -25,6 +25,7 @@
     "redux": "^4.0.1",
     "redux-persist": "^5.10.0",
     "redux-thunk": "^2.3.0",
+    "rn-fetch-blob": "^0.10.13",
     "yarn": "^1.10.1"
   },
   "devDependencies": {

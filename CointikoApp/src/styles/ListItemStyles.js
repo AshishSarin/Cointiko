@@ -11,13 +11,13 @@ export const postItemStyle = StyleSheet.create({
 
     itemTouchable: {
         flexDirection: 'row',
-        height: 120,
+        height: 108,
         alignItems: 'center',
         paddingHorizontal: 12,
-        paddingVertical: 20
+        paddingVertical: 16
     },
     itemThumbnail: {
-        height: 80, width: 80, justifyContent: 'center', alignItems: 'center',
+        height: 76, width: 76, justifyContent: 'center', alignItems: 'center',
     },
 
     itemInfo: {

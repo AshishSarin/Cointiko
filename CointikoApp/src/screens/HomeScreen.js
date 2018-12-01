@@ -16,6 +16,13 @@ class HomeScreen extends Component {
         title: ScreenTitles.TITLE_UPDATES_TAB,
     };
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            is_updated: false
+        };
+    }
+
     render() {
 
         const { paddingHeight, scrollY, onScroll } = this.props.collapsible;

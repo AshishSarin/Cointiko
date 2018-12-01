@@ -9,11 +9,13 @@ import MiningScreen from './MiningScreen';
 import NewsScreen from './NewsScreen';
 import WalletsScreen from './WalletsScreen';
 import TradingScreen from './TradingScreen';
+import SavedScreen from './SavedScreen';
 
 export {
     ConverterScreen, HomeScreen,
     AboutScreen, MarketScreen,
     PostDetailScreen, BlockchainScreen,
     CryptocurrencyScreen, MiningScreen,
-    NewsScreen, WalletsScreen
+    NewsScreen, WalletsScreen, SavedScreen,
+    TradingScreen
 };

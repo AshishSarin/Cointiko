@@ -22,9 +22,15 @@ export const postListStyle = StyleSheet.create({
 export const postDetailStyle = StyleSheet.create({
     container: {
         flex: 1,
-        paddingTop: 12,
-        paddingHorizontal: 24,
+        paddingHorizontal: 0,
         marginTop: 0,
+        backgroundColor: LIST_BACKGROUND_COLOR
+    },
+
+    postContainer: {
+        flex: 1,
+        paddingTop: 12,
+        paddingHorizontal: 12,
         backgroundColor: 'white'
     },
 

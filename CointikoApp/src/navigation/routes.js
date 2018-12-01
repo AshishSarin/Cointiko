@@ -8,23 +8,28 @@ import { Header } from 'react-navigation';
 
 
 import { collapsibleOptionsForTab, collapsibleTabConfig } from 'react-navigation-collapsible';
-import { ScreenTitles, COINTIKO_HEADER_TINT_COLOR, COINTIKO_HEADER_COLOR } from "../values";
+import { COINTIKO_HEADER_TINT_COLOR, COINTIKO_HEADER_COLOR } from "../values";
 import {
     HomeScreen, MarketScreen, ConverterScreen,
     AboutScreen, PostDetailScreen, BlockchainScreen,
     CryptocurrencyScreen,
     MiningScreen,
     NewsScreen,
-    WalletsScreen
+    WalletsScreen,
+    SavedScreen,
+    TradingScreen
 } from "../screens";
 import Sidemenu from "./SideMenu";
 import { DrawerButton } from "../components/buttons";
-import TradingScreen from "../screens/TradingScreen";
 
 
 
 const HomeTabStack = createMaterialTopTabNavigator(
     {
+        // ConverterScreen: {
+        //     screen: ConverterScreen
+        // },
+
         HomeScreen: {
             screen: HomeScreen,
 
@@ -34,9 +39,11 @@ const HomeTabStack = createMaterialTopTabNavigator(
 
         },
 
-        ConverterScreen: {
-            screen: ConverterScreen
+        SavedScreen: {
+            screen: SavedScreen
         },
+
+
 
     },
     collapsibleTabConfig({

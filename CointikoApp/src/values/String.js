@@ -1,16 +1,16 @@
 export const ScreenTitles = {
-    TITLE_HOME_SCREEN: 'Coinitko',
-    TITLE_ABOUT_SCREEN: 'About Us',
+    TITLE_HOME_SCREEN: 'Coinitko ',
+    TITLE_ABOUT_SCREEN: 'About Us ',
     TITLE_UPDATES_TAB: 'Updates',
     TITLE_LIVE_PRICES_TAB: 'Live Prices',
     TITLE_SAVED_POST: 'Saved',
-    TITLE_BLOCKCHAIN_SCREEN: 'Blockchain',
-    TITLE_CRYPTOCURRENCY_SCREEN: 'Cryptocurrency 101',
-    TITLE_MINING_SCREEN: 'Mining',
-    TITLE_NEWS_SCREEN: 'News',
-    TITLE_WALLETS_SCREEN: 'Wallets',
-    TITLE_TRADING_SCREEN: 'Trading',
-    TITLE_POST_DETAIL_SCREEN: 'Details'
+    TITLE_BLOCKCHAIN_SCREEN: 'Blockchain ',
+    TITLE_CRYPTOCURRENCY_SCREEN: 'Cryptocurrency 101 ',
+    TITLE_MINING_SCREEN: 'Mining ',
+    TITLE_NEWS_SCREEN: 'News ',
+    TITLE_WALLETS_SCREEN: 'Wallets ',
+    TITLE_TRADING_SCREEN: 'Trading ',
+    TITLE_POST_DETAIL_SCREEN: 'Details '
 }
 
 export const DrawerItemsLabels = {

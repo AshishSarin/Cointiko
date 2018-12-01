@@ -1,6 +1,6 @@
 export const PROGRESS_BAR_COLOR = '#28343b'
 export const DRAWER_ITEM_TEXT_COLOLR = '#bec2c4'
-export const DRAWER_ITEM_SELECTED_TEXT_COLOLR = '#ffc600'
+export const DRAWER_ITEM_SELECTED_TEXT_COLOLR = '#3b80fc'
 export const DRAWER_ITEM_COLOR = '#28343b'
 export const DRAWER_ITEM_SEPERATOR_COLOR = '#687075';
 export const LIST_BACKGROUND_COLOR = '#E0DDDD';

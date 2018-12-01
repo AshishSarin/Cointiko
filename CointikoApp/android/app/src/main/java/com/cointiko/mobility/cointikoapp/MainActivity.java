@@ -1,4 +1,4 @@
-package com.squarelabs.mobility.cointiko;
+package com.cointiko.mobility.cointikoapp;
 
 import com.facebook.react.ReactActivity;
 

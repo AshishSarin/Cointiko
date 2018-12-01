@@ -12,6 +12,7 @@ import { CointikoStatusBar } from '../components/widgets';
 import { addToSavedPost, removeFromSavedPost } from '../actions';
 import RNFetchBlob from 'rn-fetch-blob'
 import { LIST_BACKGROUND_COLOR } from '../values';
+import { Header } from 'react-navigation';
 
 import { PostListItem } from '../components/listItems';
 
@@ -19,9 +20,15 @@ class PostDetailScreen extends Component {
 
     static navigationOptions = ({ navigation }) => {
         return {
-            title: ScreenTitles.TITLE_POST_DETAIL_SCREEN,
+            // title: ScreenTitles.TITLE_POST_DETAIL_SCREEN,
             headerStyle: { backgroundColor: COINTIKO_HEADER_COLOR },
             headerTintColor: COINTIKO_HEADER_TINT_COLOR,
+            headerTitle:
+                <Image
+                    style={{ width: (Header.HEIGHT - 20) * 3.4379, height: (Header.HEIGHT - 20) }}
+                    resizeMode="contain"
+                    source={require('../images/logo_cointiko.png')}
+                />,
             headerRight: (
                 <View style={{ flexDirection: 'row' }}>
                     <TouchableOpacity

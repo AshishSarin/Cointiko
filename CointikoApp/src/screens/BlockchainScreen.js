@@ -12,7 +12,8 @@ class BlockchainScreen extends Component {
     static navigationOptions = ({ navigation }) => (
         {
             title: ScreenTitles.TITLE_BLOCKCHAIN_SCREEN,
-            headerStyle: { backgroundColor: COINTIKO_HEADER_COLOR },
+            headerStyle: { backgroundColor: COINTIKO_HEADER_COLOR, },
+            headerTitleStyle: { fontFamily: 'Roboto' },
             headerTintColor: COINTIKO_HEADER_TINT_COLOR,
             headerLeft: (
                 <DrawerButton onPressButton={() => navigation.openDrawer()} />

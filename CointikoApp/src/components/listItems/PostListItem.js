@@ -101,7 +101,18 @@ class PostListItem extends Component {
     }
 
     renderItemContent(postItemData) {
-        var imageUrl = postItemData._embedded["wp:featuredmedia"][0].media_details.sizes["thumbnail"].source_url;
+        let imageUrl;
+        if (postItemData._embedded && postItemData._embedded["wp:featuredmedia"] &&
+            postItemData._embedded["wp:featuredmedia"][0] &&
+            postItemData._embedded["wp:featuredmedia"][0].media_details &&
+            postItemData._embedded["wp:featuredmedia"][0].media_details.sizes &&
+            postItemData._embedded["wp:featuredmedia"][0].media_details.sizes["thumbnail"] &&
+            postItemData._embedded["wp:featuredmedia"][0].media_details.sizes["thumbnail"].source_url
+        ) {
+            imageUrl = postItemData._embedded["wp:featuredmedia"][0].media_details.sizes["thumbnail"].source_url;
+        }
+        console.log('imageUrl', postItemData.id, imageUrl);
+        // var imageUrl = postItemData._embedded["wp:featuredmedia"][0].media_details.sizes["thumbnail"].source_url;
         let title = "";
         if (postItemData && postItemData.title && postItemData.title.rendered) {
             title = decodeHtmlEntity(postItemData.title.rendered);
@@ -114,7 +125,7 @@ class PostListItem extends Component {
                     defaultSource={require('../../images/logo_app.png')}
                     style={postItemStyle.itemThumbnail}
                     source={{ uri: imageUrl }}
-                    onError={() => console.warn('error')}
+                    onError={() => console.warn('error in loading image', postItemData.id)}
                     onLoadEnd={() => {
                         this.setState({ ...this.state, isImageLoading: false });
                     }}

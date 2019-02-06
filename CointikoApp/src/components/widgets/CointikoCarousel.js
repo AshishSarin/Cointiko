@@ -49,7 +49,14 @@ export default class CointikoCarousel extends Component {
     }
 
     renderFeaturedItem(postItem) {
-        var imageUrl = postItem._embedded["wp:featuredmedia"][0].source_url;
+        let imageUrl;
+
+        if (postItem._embedded && postItem._embedded["wp:featuredmedia"] &&
+            postItem._embedded["wp:featuredmedia"][0] &&
+            postItem._embedded["wp:featuredmedia"][0].source_url
+        ) {
+            imageUrl = postItem._embedded["wp:featuredmedia"][0].source_url;
+        }
         return (
             <View style={featuredPostItemStyle.container} key={postItem.id}>
                 <CardView style={featuredPostItemStyle.cardContainer}

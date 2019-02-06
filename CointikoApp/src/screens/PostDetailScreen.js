@@ -135,7 +135,15 @@ class PostDetailScreen extends Component {
             var tmp = htmlContent.replace(/<img .*?>/, "");
             var tmp2 = tmp.replace("<p></p>", "");
             tmp2 = tmp2.replace("<h1></h1>", "");
-            var tempImg = this.state.postData._embedded["wp:featuredmedia"][0].source_url;
+            // var tempImg = this.state.postData._embedded["wp:featuredmedia"][0].source_url;
+            let postItemData = this.state.postData;
+            let tempImg;
+            if (postItemData._embedded && postItemData._embedded["wp:featuredmedia"] &&
+                postItemData._embedded["wp:featuredmedia"][0] &&
+                postItemData._embedded["wp:featuredmedia"][0].source_url
+            ) {
+                tempImg = postItemData._embedded["wp:featuredmedia"][0].source_url;
+            }
             return (
                 <View style={{ flex: 1 }}>
                     <CointikoStatusBar />
